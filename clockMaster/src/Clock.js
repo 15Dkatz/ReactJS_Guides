@@ -45,11 +45,18 @@ class Clock extends Component {
     let hours = Math.floor((time/1000*60*60) % 24);
     let days = Math.floor(time/(1000*60*60*24));
 
-    console.log('time', time);
-    console.log('seconds', seconds);
-    console.log('minutes', minutes);
-    console.log('hours', hours);
-    console.log('days', days);
+    // console.log('time', time);
+    // console.log('seconds', seconds);
+    // console.log('minutes', minutes);
+    // console.log('hours', hours);
+    // console.log('days', days);
+
+    this.setState({
+      days,
+      hours,
+      minutes,
+      seconds
+    })
   }
 
 }
