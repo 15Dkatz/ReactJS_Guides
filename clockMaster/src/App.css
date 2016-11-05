@@ -6,7 +6,7 @@
   font-size: 20px;
 }
 
-.Clock-day, .Clock-hour, .Clock-minute, .Clock-second {
+.Clock-days, .Clock-hours, .Clock-minutes, .Clock-seconds {
   display: inline;
   margin: 10px;
 }
