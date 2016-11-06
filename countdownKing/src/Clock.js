@@ -5,10 +5,10 @@ class Clock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      'days': 0,
-      'hours': 0,
-      'minutes': 0,
-      'seconds': 0,
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 0,
       timer: 0
     }
   }
@@ -38,12 +38,17 @@ class Clock extends Component {
         <div className="Clock-seconds">
           {this.state.seconds} Second(s)
         </div>
-        {/*NEXT VIDEO: Add a button to update state of time remaining after fully defining the funciton*/}
-        {/*<button onClick={() => {this.getTimeUntil(this.props.deadline)}}>
-          Get Time Until {this.props.deadline}
-        </button>*/}
       </div>
     )
+  }
+
+  leading0(num) {
+    // if (num < 10) {
+      // console.log('num is less than 10!', num);
+      // return '0' + num;
+    // }
+    // return num; //explain that this code is equivalent
+    return num < 10 ? '0' + num : num;
   }
 
   // updates days, hours, minutes, and seconds of state according
@@ -56,11 +61,10 @@ class Clock extends Component {
     let hours = Math.floor(time/(1000*60*60) % 24); // the off by one is for daylight savings
     let days = Math.floor(time/(1000*60*60*24));
 
-    // console.log('time', time);
-    // console.log('seconds', seconds);
-    // console.log('minutes', minutes);
-    // console.log('hours', hours);
-    // console.log('days', days);
+    days = this.leading0(days);
+    hours = this.leading0(hours);
+    minutes = this.leading0(minutes);
+    seconds = this.leading0(seconds);
 
     this.setState({
       days,
