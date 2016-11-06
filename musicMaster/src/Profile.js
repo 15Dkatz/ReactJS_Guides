@@ -9,19 +9,33 @@ class Profile extends Component {
     let name = artist.name;
     let followers = artist.followers !== undefined ? `${artist.followers.total} followers` : ''
     let profile = artist.images !== undefined ? artist.images[0].url : '';
+    let genres = artist.genres !== undefined ? artist.genres : [];
 
     return (
-      <div>
+      <div className="profile">
         <img
           src={profile}
-          className="profile-img"
           alt="profile"
+          className="profile-img"
         />
-        <div className="profile-name">
-          {name}
-        </div>
-        <div className="profile-followers">
-          {followers}
+        <div className="profile-info">
+          <div className="profile-name">
+            {name}
+          </div>
+          <div className="profile-followers">
+            {followers}
+          </div>
+          <div className="profile-genres">
+            Known for:
+            {
+              genres.map((genre, k) => {
+                genre = genre !== genres[genres.length-1] ? ` ${genre},` : ` & ${genre}`;
+                return (
+                  <span key={k}>{genre}</span>
+                )
+              })
+            }
+          </div>
         </div>
       </div>
     )

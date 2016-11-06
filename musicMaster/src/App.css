@@ -20,10 +20,25 @@ body {
   object-fit: cover; /*important for various widths and heights of artists*/
 }
 
+/*Profile*/
+
+.profile {
+  display: flex;
+}
+
+.profile-info {
+  margin-left: 10px;
+  text-align: left;
+}
+
 .profile-name {
   font-size: 26px;
 }
 
 .profile-followers {
+  font-size: 18px;
+}
+
+.profile-genres {
   font-size: 18px;
 }
