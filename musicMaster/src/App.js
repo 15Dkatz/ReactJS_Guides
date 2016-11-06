@@ -33,7 +33,11 @@ class App extends Component {
             </InputGroup.Addon>
           </InputGroup>
         </FormGroup>
-        <Profile artist={this.state.artist}/>
+        {
+          this.state.artist.length !== 0 ?
+            <Profile artist={this.state.artist}/> :
+            <div></div>
+        }
       </div>
     )
   }
