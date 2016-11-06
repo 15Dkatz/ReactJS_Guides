@@ -62,14 +62,14 @@ class App extends Component {
       console.log('artist', artist);
       this.setState({artist});
 
-      FETCH_URL = `${ALBUM_URL}/${artist.id}/top-tracks?country=US`;
+      FETCH_URL = `${ALBUM_URL}/${artist.id}/top-tracks?country=US&`;
       fetch(FETCH_URL, {
         method: 'GET'
       })
       .then((response) => response.json())
       .then((responseJSON) => {
         let tracks = responseJSON.tracks;
-        console.log('trakcs', tracks);
+        console.log('tracks', tracks);
         this.setState({tracks});
       })
     })

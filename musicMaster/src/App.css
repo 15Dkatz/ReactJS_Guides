@@ -13,10 +13,10 @@ body {
 }
 
 .profile-img {
-  width: 220px;
-  height: 220px;
-  border: 3px solid white; /*contrast teh black background*/
-  border-radius: 3px;
+  width: 150px;
+  height: 150px;
+  border: 3px solid white; /*contrast the black background*/
+  border-radius: 75px;
   object-fit: cover; /*important for various widths and heights of artists*/
 }
 
@@ -41,4 +41,23 @@ body {
 
 .profile-genres {
   font-size: 18px;
+}
+
+/*Gallery*/
+
+.Gallery {
+  margin: 10px;
+}
+
+.track {
+  display: inline-block;
+  margin: 10px;
+}
+
+.track-img {
+  width: 220px;
+  height: 220px;
+  border: 3px solid white;
+  border-radius: 3px;
+  object-fit: cover;
 }

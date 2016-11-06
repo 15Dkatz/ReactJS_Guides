@@ -8,9 +8,15 @@ class Gallery extends Component {
       <div className="Gallery">
         {
           tracks.map((track, k) => {
+            let trackImg = track.album.images[0].url;
             return (
-              <div key={k}>
-                {track.name}
+              <div key={k} className="track">
+                {/*{track.name}*/}
+                <img
+                  src={trackImg}
+                  className="track-img"
+                  alt="track"
+                />
               </div>
             )
           })
