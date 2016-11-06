@@ -27,21 +27,21 @@ class Clock extends Component {
     return (
       <div className="Clock">
         <div className="Clock-days">
-          {this.state.days} Days
+          {this.state.days} Day(s)
         </div>
         <div className="Clock-hours">
-          {this.state.hours} Hours
+          {this.state.hours} Hour(s)
         </div>
         <div className="Clock-minutes">
-          {this.state.minutes} Minutes
+          {this.state.minutes} Minute(s)
         </div>
         <div className="Clock-seconds">
-          {this.state.seconds} Seconds
+          {this.state.seconds} Second(s)
         </div>
         {/*NEXT VIDEO: Add a button to update state of time remaining after fully defining the funciton*/}
-        <button onClick={() => {this.getTimeUntil(this.props.deadline)}}>
+        {/*<button onClick={() => {this.getTimeUntil(this.props.deadline)}}>
           Get Time Until {this.props.deadline}
-        </button>
+        </button>*/}
       </div>
     )
   }
@@ -56,11 +56,11 @@ class Clock extends Component {
     let hours = Math.floor(time/(1000*60*60) % 24); // the off by one is for daylight savings
     let days = Math.floor(time/(1000*60*60*24));
 
-    console.log('time', time);
-    console.log('seconds', seconds);
-    console.log('minutes', minutes);
-    console.log('hours', hours);
-    console.log('days', days);
+    // console.log('time', time);
+    // console.log('seconds', seconds);
+    // console.log('minutes', minutes);
+    // console.log('hours', hours);
+    // console.log('days', days);
 
     this.setState({
       days,
