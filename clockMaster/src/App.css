@@ -15,12 +15,7 @@
   font-size: 30px;
 }
 
-.deadline-input, .deadline-btn {
+.deadline-input {
   font-size: 25px;
   margin: 5px;
-  border-radius: 2px;
-}
-
-.deadline-input {
-  width: 300px;
 }
