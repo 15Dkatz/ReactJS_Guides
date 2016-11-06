@@ -8,8 +8,19 @@ class Clock extends Component {
       'days': 0,
       'hours': 0,
       'minutes': 0,
-      'seconds': 0
+      'seconds': 0,
+      timer: 0
     }
+  }
+
+  componentWillMount() {
+    this.getTimeUntil(this.props.deadline);
+  }
+
+  componentDidMount() {
+    setInterval(() => {
+      this.getTimeUntil(this.props.deadline)
+    }, 1000);
   }
 
   render() {
@@ -42,14 +53,14 @@ class Clock extends Component {
     let time = Date.parse(deadline) - Date.parse(new Date()); // outputs a huge number around 10 digits length
     let seconds = Math.floor((time/1000)%60);
     let minutes = Math.floor((time/1000/60) % 60);
-    let hours = Math.floor((time/1000*60*60) % 24);
+    let hours = Math.floor(time/(1000*60*60) % 24); // the off by one is for daylight savings
     let days = Math.floor(time/(1000*60*60*24));
 
-    // console.log('time', time);
-    // console.log('seconds', seconds);
-    // console.log('minutes', minutes);
-    // console.log('hours', hours);
-    // console.log('days', days);
+    console.log('time', time);
+    console.log('seconds', seconds);
+    console.log('minutes', minutes);
+    console.log('hours', hours);
+    console.log('days', days);
 
     this.setState({
       days,
