@@ -1,5 +1,6 @@
 body {
   background: #000000;
+  color: #fff;
 }
 
 .App {
@@ -9,5 +10,4 @@ body {
 
 .App-title {
   font-size: 26px;
-  color: #fff;
 }

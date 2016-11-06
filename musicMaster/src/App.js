@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-// import SearchBar from './SearchBar';
 import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap';
 import './App.css';
+
+import Profile from './Profile';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: ''
+      query: '',
+      artist: []
     }
   }
 
@@ -26,14 +28,12 @@ class App extends Component {
               onChange={event => this.setState({query: event.target.value})}
               onKeyPress={event => {event.key === 'Enter' ? this.search() : console.log()}}
             />
-            <InputGroup.Addon
-              onClick={() => this.search()}
-
-            >
+            <InputGroup.Addon onClick={() => this.search()}>
               <Glyphicon glyph="search"></Glyphicon>
             </InputGroup.Addon>
           </InputGroup>
         </FormGroup>
+        <Profile artist={this.state.artist}/>
       </div>
     )
   }
@@ -49,7 +49,9 @@ class App extends Component {
     })
     .then((response) => response.json())
     .then((responseJSON) => {
-      console.log('responseJSON', responseJSON);
+      let artist = responseJSON.artists.items[0];
+      console.log('artist', artist);
+      this.setState({artist})
     })
   }
 }
