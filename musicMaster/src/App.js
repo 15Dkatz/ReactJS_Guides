@@ -3,6 +3,7 @@ import { FormGroup, FormControl, InputGroup, Glyphicon } from 'react-bootstrap';
 import './App.css';
 
 import Profile from './Profile';
+import Gallery from './Gallery';
 
 class App extends Component {
   constructor(props) {
@@ -38,6 +39,7 @@ class App extends Component {
             <Profile artist={this.state.artist}/> :
             <div></div>
         }
+        <Gallery tracks={this.state.tracks}/>
       </div>
     )
   }
@@ -48,6 +50,9 @@ class App extends Component {
 
     const BASE_URL = 'https://api.spotify.com/v1/search?';
     let FETCH_URL = `${BASE_URL}q=${this.state.query}&type=artist&limit=1`;
+
+    const ALBUM_URL = 'https://api.spotify.com/v1/artists';
+
     fetch(FETCH_URL, {
       method: 'GET'
     })
@@ -55,7 +60,18 @@ class App extends Component {
     .then((responseJSON) => {
       let artist = responseJSON.artists.items[0];
       console.log('artist', artist);
-      this.setState({artist})
+      this.setState({artist});
+
+      FETCH_URL = `${ALBUM_URL}/${artist.id}/top-tracks?country=US`;
+      fetch(FETCH_URL, {
+        method: 'GET'
+      })
+      .then((response) => response.json())
+      .then((responseJSON) => {
+        let tracks = responseJSON.tracks;
+        console.log('trakcs', tracks);
+        this.setState({tracks});
+      })
     })
   }
 }
