@@ -47,11 +47,17 @@ body {
 
 .Gallery {
   margin: 10px;
+  text-align: center;
 }
 
 .track {
   display: inline-block;
   margin: 10px;
+  width: 220px;
+  height: 220px;
+  position: relative;
+  padding: 10px;
+  text-align: left;
 }
 
 .track-img {
@@ -60,4 +66,18 @@ body {
   border: 3px solid white;
   border-radius: 3px;
   object-fit: cover;
+  position: absolute;
+  filter: brightness(70%);
+}
+
+.track-text {
+  background-color: black;
+  opacity: 0.75;
+  margin-left: 3px;
+  width: 214px;
+  color: '#fff';
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  padding: 10px;
 }

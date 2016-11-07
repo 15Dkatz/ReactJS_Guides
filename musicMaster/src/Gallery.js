@@ -17,6 +17,9 @@ class Gallery extends Component {
                   className="track-img"
                   alt="track"
                 />
+                <p className="track-text">
+                  {track.name}
+                </p>
               </div>
             )
           })

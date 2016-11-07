@@ -8,7 +8,7 @@ class Profile extends Component {
     let artist = this.props.artist !== [] ? this.props.artist : [];
     let name = artist.name;
     let followers = artist.followers !== undefined ? `${artist.followers.total} followers` : ''
-    let profile = artist.images !== undefined ? artist.images[0].url : '';
+    let profile = artist.images[0] !== undefined ? artist.images[0].url : '';
     let genres = artist.genres !== undefined ? artist.genres : [];
 
     return (

@@ -10,7 +10,7 @@ class App extends Component {
     super(props);
     this.state = {
       query: '',
-      artist: []
+      artist: null
     }
   }
 
@@ -35,7 +35,7 @@ class App extends Component {
           </InputGroup>
         </FormGroup>
         {
-          this.state.artist.length !== 0 ?
+          this.state.artist !== null ?
             <Profile artist={this.state.artist}/> :
             <div></div>
         }
