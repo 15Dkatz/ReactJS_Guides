@@ -6,7 +6,7 @@ class Profile extends Component {
 
   render() {
     let artist = this.props.artist !== [] ? this.props.artist : [];
-    let name = artist.name;
+    let name = artist.name !== undefined ? artist.name : '';
     let followers = artist.followers !== undefined ? `${artist.followers.total} followers` : ''
     let profile = artist.images[0] !== undefined ? artist.images[0].url : '';
     let genres = artist.genres !== undefined ? artist.genres : [];

@@ -5,7 +5,8 @@ class Gallery extends Component {
     super(props);
     this.state = {
       playing: false,
-      albumPlaying: ''
+      playingUrl: '',
+      audio: null
     }
   }
 
@@ -40,10 +41,36 @@ class Gallery extends Component {
     )
   }
 
+  // figure this out!
   audio(previewUrl) {
     console.log('play', previewUrl);
     let audio = new Audio(previewUrl); // native js object
-    audio.play();
+    if (!this.state.playing) {
+      audio.play();
+      this.setState({
+        playing: true,
+        playingUrl: previewUrl,
+        audio: audio
+      });
+    } else {
+      if (this.state.playingUrl === previewUrl) {
+        this.state.audio.pause();
+        this.setState({
+          playing: false
+        });
+      } else {
+        this.state.audio.pause();
+        audio.play();
+        this.setState({
+          playingUrl: previewUrl,
+          playing: true,
+          audio: audio
+        });
+      }
+    }
+
+    // if playing do stop
+    // if different url, stop the play, and start playing that one, and playing stays true
   }
 }
 
