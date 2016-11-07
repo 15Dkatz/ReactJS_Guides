@@ -20,7 +20,7 @@ class App extends Component {
         <div className="App-title">
           MusicMaster
         </div>
-        <FormGroup>
+        <FormGroup className="searchBar">
           <InputGroup>
             <FormControl
               type="text"
