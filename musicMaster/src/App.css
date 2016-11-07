@@ -3,8 +3,6 @@ body {
   color: #fff;
 }
 
-/*TODO fix search bar*/
-
 .App {
   text-align: center;
   padding: 5%;
@@ -45,6 +43,8 @@ body {
 
 .profile-name {
   font-size: 26px;
+  animation-name: enlarge;
+  animation-duration: .25;
 }
 
 .profile-followers {
@@ -70,6 +70,7 @@ body {
   position: relative;
   padding: 10px;
   text-align: left;
+  cursor: pointer;
 }
 
 .track-img {
@@ -91,4 +92,41 @@ body {
   position: absolute;
   bottom: 0;
   padding: 10px;
+}
+
+.track-play {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  /*display: none;*/
+}
+
+.track-play-inner {
+  pasition: absolute;
+  text-align: center;
+  font-size: 25px;
+  background-color: black;
+  border-radius: 30px;
+  color: #fff;
+  opacity: 0;
+  width: 60px;
+  height: 60px;
+  padding-top: 13px;
+  margin-left: 80px;
+  margin-top: 80px;
+}
+
+.track-play-inner:hover {
+  animation-name: fade-in;
+  animation-duration: 0.5s;
+  opacity: 0.9;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: .9;
+  }
 }
