@@ -9,7 +9,7 @@ class App extends Component {
     return this.props.reminders.map((reminder) => {
       return (
         <li
-          key={reminder.text}
+          key={reminder.id}
           className="list-group-item"
         >
           {reminder.text} | {reminder.dueDate}
@@ -20,12 +20,18 @@ class App extends Component {
 
   render() {
     console.log('app props', this.props);
+    let text;
+    let dueDate;
+
     return (
       <ul className="list-group col-sm-4">
         {this.renderReminders()}
+        {/*Add an input that passes an action with text, and a date*/}
+        <input ref={node => {text = node}}/>
+        <input type="datetime-local" ref={node => {dueDate = node}}/>
         {/*button to add random task*/}
-        <div onClick={() => this.props.addReminder()}>
-          Add random
+        <div onClick={() => {this.props.addReminder(text.value, dueDate.value); console.log("typeof dueDate.value", typeof(dueDate.value))}}>
+          Add Reminder
         </div>
       </ul>
     )

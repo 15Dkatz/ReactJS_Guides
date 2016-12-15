@@ -3,13 +3,19 @@
 
 import {ADD_REMINDER} from '../constants'
 
+let nextReminderId = 0;
 
 const reminder = (state={}, action) => {
   switch (action.type) {
     case ADD_REMINDER:
+      nextReminderId++;
+      let dueDate = new Date().toString();
+      dueDate = action.dueDate ? action.dueDate : dueDate;
+      // let dueDate = new Date(action.dueDate) || ; // make sure it's not null
       return {
-        text: 'switch from strings to action.text later' + Math.random(),
-        dueDate: new Date().toString()
+        text: action.text,
+        dueDate: dueDate,
+        id: nextReminderId
       }
     default:
       return state
