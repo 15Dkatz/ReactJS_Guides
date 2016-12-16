@@ -6,7 +6,10 @@ import { addReminder } from '../actions/index'
 
 class App extends Component {
   renderReminders() {
-    return this.props.reminders.map((reminder) => {
+    let reminders = this.props.reminders
+
+
+    return reminders.map((reminder) => {
       return (
         <li
           key={reminder.id}
