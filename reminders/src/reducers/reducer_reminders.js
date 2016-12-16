@@ -2,7 +2,7 @@
 // remember to keep them pure!
 /*eslint-disable no-unused-vars*/
 
-import {ADD_REMINDER} from '../constants'
+import {ADD_REMINDER, CLEAR_REMINDERS} from '../constants'
 // import cookie from 'react-cookie'
 import {bake_cookie, read_cookie, delete_cookie} from '../helpers/cookies'
 let nextReminderId = 0;
@@ -26,7 +26,7 @@ const reminder = (state={}, action) => {
 }
 
 const reminders = (state = [], action) => {
-  // cookies.delete_cookie('reminders');
+  // delete_cookie('reminders');
   // if reminders exists in cookies, set reminders to cookies
   let reminders = null;
   console.log('reminders in cookies', read_cookie('reminders'));
@@ -42,6 +42,10 @@ const reminders = (state = [], action) => {
       reminders = [...state, reminder(undefined, action)]
       bake_cookie('reminders', reminders);
       return reminders
+    case CLEAR_REMINDERS:
+      reminders = [];
+      delete_cookie('reminders');
+      return reminders;
     default:
       return state
   }
