@@ -17,3 +17,12 @@ form {
 input {
   margin: 5px;
 }
+
+.list-item {
+  display: inline-block;
+}
+
+.delete-button {
+  float: right;
+  margin-top: 3%;
+}

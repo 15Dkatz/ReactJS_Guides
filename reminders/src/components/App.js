@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 // use the conenct function to map the state to props
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { addReminder, clearReminders } from '../actions/index'
+import { addReminder, deleteReminder, clearReminders } from '../actions/index'
 import moment from 'moment'
 
 class App extends Component {
@@ -12,24 +12,21 @@ class App extends Component {
 
     return reminders.map((reminder) => {
       return (
-        <li
-          key={reminder.id}
-          className="list-group-item"
-        >
-          {/*use moment to convert reminder.dueDate*/}
-          <div>
-            {reminder.text}
+        <li key={reminder.id} className="list-group-item">
+          <div className="list-item">
+            <div>{reminder.text}</div>
+            <div><em>{moment(new Date(reminder.dueDate)).fromNow()}</em></div>
           </div>
-          <div>
-            {moment(new Date(reminder.dueDate)).fromNow()}
-          </div>
+          <div
+            onClick={() => this.props.deleteReminder(reminder.id)}
+            className="delete-button list-item"
+          >&#x2715;</div>
         </li>
       )
     })
   }
 
   render() {
-    console.log('app props', this.props);
     let text;
     let dueDate;
 
@@ -43,7 +40,7 @@ class App extends Component {
             <input ref={node => {text = node}} placeholder='I have to...' className="form-control"/>
             <input type="datetime-local"  className="form-control" ref={node => {dueDate = node}}/>
           </div>
-          <button type="submit" className="btn btn-success" onClick={() => {this.props.addReminder(text.value, dueDate.value); console.log("typeof dueDate.value", typeof(dueDate.value))}}>
+          <button type="button" className="btn btn-success" onClick={() => {this.props.addReminder(text.value, dueDate.value); console.log("typeof dueDate.value", typeof(dueDate.value))}}>
             Add Reminder
           </button>
         </form>
@@ -68,7 +65,7 @@ function mapStateToProps(state) {
 // how does this work exactly?
 // it maps the addReminder action to the overall dispatch...?
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({addReminder, clearReminders}, dispatch)
+  return bindActionCreators({addReminder, deleteReminder, clearReminders}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
