@@ -3,7 +3,7 @@
 
 import React, { Component } from 'react'
 // import other components
-import GroceryContainer from './GroceriesContainer'
+import GroceryList from '../components/GroceryList'
 
 class App extends Component {
   render() {
@@ -13,7 +13,7 @@ class App extends Component {
         <hr/>
         {/*Groceries component*/}
         {/*Cart component*/}
-        <GroceryContainer />
+        <GroceryList />
       </div>
     )
   }

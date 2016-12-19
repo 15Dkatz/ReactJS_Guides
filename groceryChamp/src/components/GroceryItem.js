@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+// import { addToCart } from '../actions'
 
-// TODO when displaying, make sure to transpile the babel in
+// NOTE when displaying, make sure to transpile the babel in
 // order to show what the es2015 version of the arrow syntax is
-const grocery = (title, price) => (
+const grocery = (title, price, stock) => (
   <div>
-    {title} | {price}
+    {title} | {price} | {stock}
   </div>
 )
 
 const GroceryItem = (groceryItem) => (
-  <div key={groceryItem.id}>
-    {grocery(groceryItem.title, groceryItem.price)}
+  <div>
+    {grocery(groceryItem.title, groceryItem.price, groceryItem.stock)}
+    <button onClick={() => groceryItem.addToCart(groceryItem.id)}>+</button>
   </div>
 )
 

@@ -9,6 +9,7 @@ import GroceryItem from '../components/GroceryItem'
 
 // map over grocery.json
 import groceries from '../api/groceries'
+// store the groceries as state and calculate totals by additions
 
 class GroceriesContainer extends Component {
   render() {
@@ -24,6 +25,7 @@ class GroceriesContainer extends Component {
             key={groceryItem.id}
             title={groceryItem.title}
             price={groceryItem.price}
+            stock={groceryItem.stock}
           />
           // console.log('groceryItem', groceryItem)
         )}
