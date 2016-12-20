@@ -12,7 +12,8 @@ class Cart extends Component {
     let {cart} = this.props
     for (let c = 0; c < cart.length; c++) {
       let item = cart[c];
-      total += item.price;
+      // total = typeof(item.price) === "number" ? total + item.price : total + Number.parseFloat(item.price);
+      total += Number.parseFloat(item.price)
     }
     return (total + '').substring(0, 5);
     // TODO limit the decimal places to 2

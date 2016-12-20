@@ -15,7 +15,7 @@ const GroceryItem = (groceryItem) => (
     {grocery(groceryItem.title, groceryItem.price, groceryItem.stock)}
     {
       groceryItem.stock > 0 ?
-      <button onClick={() => groceryItem.addToCart(groceryItem.id)}>+</button> :
+      <button onClick={() => groceryItem.addToCart(groceryItem.title, groceryItem.price, groceryItem.stock, groceryItem.id)}>+</button> :
       <button>out of stock!</button> // figure out a better UI for this
       // TODO make the button unclickable with html
     }

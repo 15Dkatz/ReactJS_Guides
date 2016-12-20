@@ -3,6 +3,7 @@
 
 import React, { Component } from 'react'
 // import other components
+import AddStockForm from '../components/AddStockForm'
 import GroceryList from '../components/GroceryList'
 import Cart from '../components/Cart'
 
@@ -11,6 +12,8 @@ class App extends Component {
     return (
       <div>
         <h2>Grocery Champ</h2>
+        <hr/>
+        <AddStockForm />
         <hr/>
         <GroceryList />
         <hr/>

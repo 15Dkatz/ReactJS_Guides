@@ -1,6 +1,6 @@
 // TODO remove console.logs!
 
-import { ADD_TO_CART, RET_FROM_CART } from '../constants/ActionTypes'
+import { ADD_TO_STOCK, ADD_TO_CART, RET_FROM_CART } from '../constants/ActionTypes'
 
 import initialGroceries from '../api/groceries'
 
@@ -14,6 +14,8 @@ const changeStock = (groceries = [], groceryId, reduce) => {
   for (var g = 0; g<groceries.length; g++) {
     let grocery = groceries[g];
     if (grocery.id === groceryId) {
+      grocery.stock = Number.parseFloat(grocery.stock);
+      console.log('grocery.stock', grocery.stock);
       grocery.stock = reduce ? grocery.stock > 0 ? grocery.stock - 1 : 0 : grocery.stock + 1;
       // above line is ===
       // if (reduce) {
@@ -33,13 +35,18 @@ const changeStock = (groceries = [], groceryId, reduce) => {
 const groceries = (state = initialGroceries, action) => {
   let newGroceries = null;
   switch (action.type) {
+    case ADD_TO_STOCK:
+      let {title, price, stock, id} = action;
+      newGroceries = state.concat({title, price, stock, id});
+      console.log('newGroceries', newGroceries)
+      return [...newGroceries]
     case ADD_TO_CART:
       // console.log('action', action)
-      newGroceries = changeStock(state, action.groceryId, true)
+      newGroceries = changeStock(state, action.id, true)
       return [...newGroceries] // TODO make these 3 lines 1
       // TODO explain why you !NEED! the spread operator
     case RET_FROM_CART:
-      newGroceries = changeStock(state, action.groceryId, false)
+      newGroceries = changeStock(state, action.id, false)
       return [...newGroceries]
     default:
       return state
