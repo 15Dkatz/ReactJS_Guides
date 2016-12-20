@@ -27,6 +27,8 @@ class App extends Component {
   }
 
   render() {
+    console.log('props', this.props)
+
     let text;
     let dueDate;
 

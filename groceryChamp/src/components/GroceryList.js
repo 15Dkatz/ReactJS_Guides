@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 // pass the addToCart function to each Item
-import GroceryItem from './GroceryItem'
+// import { bindActionCreators } from 'redux'
 import { addToCart } from '../actions'
+import GroceryItem from './GroceryItem'
 
 // have a smart GroceryList component that has connected actions
 
@@ -28,8 +29,12 @@ class GroceryList extends Component {
   }
 }
 
-const mapStateToProps = function(state) {
-  return state
-}
+const mapStateToProps = (state) => ({
+    groceries: state.groceries
+})
+
+// function mapDispatchToProps(dispatch) {
+//   return bindActionCreators({addToCart}, dispatch)
+// }
 
 export default connect(mapStateToProps, { addToCart })(GroceryList)

@@ -1,9 +1,9 @@
 import * as types from '../constants/ActionTypes'
 
-export const addToCart = function(productId) {
-  console.log('productId', productId)
+export const addToCart = function(groceryId) {
+  console.log('groceryId', groceryId)
   return ({
     type: types.ADD_TO_CART,
-    productId
+    groceryId
   })
 }
