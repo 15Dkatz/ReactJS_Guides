@@ -5,7 +5,7 @@ const addToCartById = (groceries, id) => {
   for (var g=0; g<groceries.length; g++) {
     let grocery = groceries[g];
     if (grocery.id === id) {
-      console.log('add to cart: ', grocery);
+      // console.log('add to cart: ', grocery);
       return grocery;
     }
   }

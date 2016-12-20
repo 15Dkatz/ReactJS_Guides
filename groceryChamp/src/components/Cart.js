@@ -13,29 +13,23 @@ class Cart extends Component {
       let item = cart[c];
       total += item.price;
     }
-    return total; // TODO limit the decimal places to 2
+    return (total + '').substring(0, 5); // TODO limit the decimal places to 2
   }
 
 
   render() {
-    console.log('props in cart', this.props)
-
     return (
       <div>
         <h3>
           Cart Total: ${this.calculateTotal()}
         </h3>
-        {/*List of items*/}
         {this.props.cart.map(item =>
-          // console.log('cartItem', item)
           <CartItem
             key={Math.random()} // in order to allow multiple of the same item
             title={item.title}
             price={item.price}
           />
         )}
-        {/*Total price*/}
-
       </div>
     )
   }
