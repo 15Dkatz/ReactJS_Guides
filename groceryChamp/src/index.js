@@ -21,3 +21,5 @@ render(
 // challenge portion:
 // add a feature where users can return an item from their cart
 // add a feature where *managers can add items to the grocery store
+// add the cookies module to keep a history of items
+// implement a clearStore method

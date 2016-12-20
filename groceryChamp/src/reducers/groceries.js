@@ -1,8 +1,9 @@
 // TODO remove console.logs!
 
-import { ADD_TO_STOCK, ADD_TO_CART, RET_FROM_CART } from '../constants/ActionTypes'
+import { ADD_TO_STOCK, ADD_TO_CART, RET_FROM_CART, CLEAR_STORE } from '../constants/ActionTypes'
 
 import initialGroceries from '../api/groceries'
+import { bake_cookie, read_cookie } from '../cookies'
 
 // helper function to calculate inventory
 
@@ -34,20 +35,32 @@ const changeStock = (groceries = [], groceryId, reduce) => {
 // howo to initialize the state...?
 const groceries = (state = initialGroceries, action) => {
   let newGroceries = null;
+  let cookie = 'groceries'
+
+  newGroceries = read_cookie(cookie);
+  state = newGroceries;
+
   switch (action.type) {
     case ADD_TO_STOCK:
       let {title, price, stock, id} = action;
       newGroceries = state.concat({title, price, stock, id});
       console.log('newGroceries', newGroceries)
+      bake_cookie(cookie, newGroceries)
       return [...newGroceries]
     case ADD_TO_CART:
       // console.log('action', action)
       newGroceries = changeStock(state, action.id, true)
+      bake_cookie(cookie, newGroceries)
       return [...newGroceries] // TODO make these 3 lines 1
       // TODO explain why you !NEED! the spread operator
     case RET_FROM_CART:
       newGroceries = changeStock(state, action.id, false)
+      bake_cookie(cookie, newGroceries)
       return [...newGroceries]
+    case CLEAR_STORE:
+      newGroceries = []
+      bake_cookie(cookie, newGroceries)
+      return newGroceries
     default:
       return state
   }

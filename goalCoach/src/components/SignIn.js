@@ -18,9 +18,10 @@ class SignIn extends Component {
     console.log('email', email, 'password', password, 'props', this.props);
     firebaseApp.auth().signInWithEmailAndPassword(email, password)
       .then(
-        user =>
-        // console.log('this', this, 'success', user)
-        this.props.signIn(user.email, user.uid)
+        user => {
+          console.log('this', this, 'success', user)
+          this.props.signIn(user.email, user.uid)
+        }
       ) //
       .catch(error => console.log('error', error)) // pass the error message through an action
   }

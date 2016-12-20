@@ -8,7 +8,7 @@ class AddStockForm extends Component {
     let title, price, stock;
     return (
       <div>
-        <h2>Add Stock</h2>
+        <h3>Add Stock</h3>
         <div>Add a new grocery item to the store:</div>
         <input placeholder='title' ref={node => {title = node}}/>
         <input placeholder='price' ref={node => {price = node}}/>

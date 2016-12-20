@@ -21,14 +21,17 @@ export const removeFromCart = function(id, index) {
 }
 
 export const addStock = function(title, price, stock) {
-  // console.log('title', title);
-  // console.log('price', price);
-  // console.log('stock', stock);
   return ({
     type: types.ADD_TO_STOCK,
     title,
     price,
     stock,
     id: Math.random()
+  })
+}
+
+export const clearStore = function() {
+  return ({
+    type: types.CLEAR_STORE
   })
 }

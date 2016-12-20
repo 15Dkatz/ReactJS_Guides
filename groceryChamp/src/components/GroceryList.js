@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addToCart } from '../actions'
+import { addToCart, clearStore } from '../actions'
 import GroceryItem from './GroceryItem'
 
 class GroceryList extends Component {
@@ -20,6 +20,7 @@ class GroceryList extends Component {
             addToCart={this.props.addToCart}
           />
         )}
+        <button onClick={() => this.props.clearStore()}>Clear Store</button>
       </div>
     )
   }
@@ -31,4 +32,4 @@ const mapStateToProps = (state) => ({
 
 // explain why { addToCart } can replace mapDispatchToProps
 
-export default connect(mapStateToProps, { addToCart })(GroceryList)
+export default connect(mapStateToProps, { addToCart, clearStore })(GroceryList)
