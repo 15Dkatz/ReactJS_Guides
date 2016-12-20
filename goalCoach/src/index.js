@@ -30,3 +30,4 @@ render(
 
 // TODO
 // look up redux router to dynamically send routes based on redux state
+// clear completed

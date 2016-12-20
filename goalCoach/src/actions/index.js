@@ -40,12 +40,28 @@ export function signOut() {
 }
 
 export function addTodo(title, email) {
-  console.log('addTodo', title, 'email', email);
   return {
     type: types.ADD_TODO,
     payload: {
       title,
       email
     }
+  }
+}
+
+export function clearTodo(index, email, title) {
+  return {
+    type: types.CLEAR_TODO,
+    payload: {
+      index,
+      email,
+      title
+    }
+  }
+}
+
+export function clearCompleted() {
+  return {
+    type: types.CLEAR_COMPLETED
   }
 }

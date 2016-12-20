@@ -3,6 +3,7 @@ import SignIn from '../components/SignIn'
 import SignUp from '../components/SignUp'
 import AddTodo from '../components/AddTodo'
 import TodoList from '../components/TodoList'
+import CompleteTodoList from '../components/CompleteTodoList'
 
 const App = () => (
   <div>
@@ -12,6 +13,8 @@ const App = () => (
     <hr/>
     <AddTodo />
     <TodoList />
+    <hr/>
+    <CompleteTodoList />
   </div>
 )
 
