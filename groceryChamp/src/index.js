@@ -1,5 +1,3 @@
-// TODO boostrap this!
-
 import React from 'react'
 import { render } from 'react-dom'
 import { createStore } from 'redux'
@@ -16,3 +14,10 @@ render(
   </Provider>,
   document.getElementById('root')
 )
+
+// TODO
+// [] boostrap this!
+
+// challenge portion:
+// add a feature where users can return an item from their cart
+// add a feature where *managers can add items to the grocery store

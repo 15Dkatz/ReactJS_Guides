@@ -29,5 +29,6 @@ const mapStateToProps = (state) => ({
     groceries: state.groceries
 })
 
+// explain why { addToCart } can replace mapDispatchToProps
 
 export default connect(mapStateToProps, { addToCart })(GroceryList)

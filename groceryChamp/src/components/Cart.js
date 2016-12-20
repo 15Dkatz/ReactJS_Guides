@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import CartItem from './CartItem'
+import { removeFromCart } from '../actions'
 // track the items in the Cart
 // calculate the dollars in the cart
 
@@ -26,11 +27,14 @@ class Cart extends Component {
         <h3>
           Cart Total: ${this.calculateTotal()}
         </h3>
-        {this.props.cart.map(item =>
+        {this.props.cart.map((item, index) =>
           <CartItem
             key={Math.random()+Date.now().toString()} // in order to allow multiple of the same item
+            id={item.id}
+            index={index}
             title={item.title}
             price={item.price}
+            removeFromCart={this.props.removeFromCart}
           />
         )}
       </div>
@@ -42,4 +46,4 @@ const mapStateToProps = (state) => ({
   cart: state.cart
 })
 
-export default connect(mapStateToProps, null)(Cart)
+export default connect(mapStateToProps, { removeFromCart })(Cart)

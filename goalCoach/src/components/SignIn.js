@@ -11,6 +11,9 @@ class SignIn extends Component {
     // hook up firebase
     // use firebase's actual method
 
+    // TODO look at the user data that is returned
+    // COPY the signature and mock the flow by returning a custom promise
+
     // then call the prop's method after using mapDispatchToProps
     console.log('email', email, 'password', password, 'props', this.props);
     firebaseApp.auth().signInWithEmailAndPassword(email, password)

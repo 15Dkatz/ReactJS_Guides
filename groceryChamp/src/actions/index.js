@@ -7,3 +7,12 @@ export const addToCart = function(groceryId) {
     groceryId
   })
 }
+
+export const removeFromCart = function(groceryId, index) {
+  console.log('return by groceryId', groceryId)
+  return ({
+    type: types.RET_FROM_CART,
+    groceryId,
+    index
+  })
+}
