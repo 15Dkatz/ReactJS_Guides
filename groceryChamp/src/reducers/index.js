@@ -4,7 +4,9 @@
 import { combineReducers } from 'redux'
 
 import groceries from './groceries'
+import cart from './cart'
 // export const
 export default combineReducers({
-  groceries
+  groceries,
+  cart
 })

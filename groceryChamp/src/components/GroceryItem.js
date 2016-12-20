@@ -15,7 +15,12 @@ const grocery = (title, price, stock) => (
 const GroceryItem = (groceryItem) => (
   <div>
     {grocery(groceryItem.title, groceryItem.price, groceryItem.stock)}
-    <button onClick={() => groceryItem.addToCart(groceryItem.id)}>+</button>
+    {
+      groceryItem.stock > 0 ?
+      <button onClick={() => groceryItem.addToCart(groceryItem.id)}>+</button> :
+      <button>empty</button> // figure out a better UI for this
+    }
+
   </div>
 )
 

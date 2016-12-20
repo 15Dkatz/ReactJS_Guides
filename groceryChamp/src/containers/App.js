@@ -4,6 +4,7 @@
 import React, { Component } from 'react'
 // import other components
 import GroceryList from '../components/GroceryList'
+import Cart from '../components/Cart'
 
 class App extends Component {
   render() {
@@ -11,9 +12,10 @@ class App extends Component {
       <div>
         <h2>Grocery Champ</h2>
         <hr/>
-        {/*Groceries component*/}
-        {/*Cart component*/}
         <GroceryList />
+        <hr/>
+        {/*Cart component*/}
+        <Cart />
       </div>
     )
   }
