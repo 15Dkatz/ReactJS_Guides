@@ -13,7 +13,10 @@ class Cart extends Component {
       let item = cart[c];
       total += item.price;
     }
-    return (total + '').substring(0, 5); // TODO limit the decimal places to 2
+    return (total + '').substring(0, 5);
+    // TODO limit the decimal places to 2
+    // TODO!!!! HIGH PRIORITY use an actual decimal limiter
+    // the above strategy leads to offBy1 race condition
   }
 
 
@@ -25,7 +28,7 @@ class Cart extends Component {
         </h3>
         {this.props.cart.map(item =>
           <CartItem
-            key={Math.random()} // in order to allow multiple of the same item
+            key={Math.random()+Date.now().toString()} // in order to allow multiple of the same item
             title={item.title}
             price={item.price}
           />
