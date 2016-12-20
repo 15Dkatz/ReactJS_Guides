@@ -2,7 +2,6 @@
 // components are smart pieces of the application
 
 import React, { Component } from 'react'
-// import other components
 import AddStockForm from '../components/AddStockForm'
 import GroceryList from '../components/GroceryList'
 import Cart from '../components/Cart'

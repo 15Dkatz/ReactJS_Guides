@@ -1,6 +1,3 @@
-// TODO rename by prepending reducer
-// cart.js -> reducer_cart.js
-
 import { ADD_TO_CART, RET_FROM_CART, CLEAR_STORE } from '../constants/ActionTypes'
 
 const cart = (state = [], action) => {
@@ -10,7 +7,6 @@ const cart = (state = [], action) => {
       let {title, price, stock, id} = action;
       return [...state, {title, price, stock, id}]
     case RET_FROM_CART:
-      // console.log('action', action, 'state', state)
       newCart = state.slice(0, action.index).concat(state.slice(action.index+1, state.length));
       return newCart;
     case CLEAR_STORE:

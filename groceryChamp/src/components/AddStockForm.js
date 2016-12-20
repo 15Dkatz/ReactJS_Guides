@@ -13,11 +13,9 @@ class AddStockForm extends Component {
         <input placeholder='title' ref={node => {title = node}}/>
         <input placeholder='price' ref={node => {price = node}}/>
         <input placeholder='stock' ref={node => {stock = node}}/>
-        <button onClick={() =>
-          this.props.addStock(title.value, price.value, stock.value)}
-          // console.log('title', title.value, 'price', price.value, 'stock', stock.value)}
-        >
-          Submit</button>
+        <button onClick={() =>this.props.addStock(title.value, price.value, stock.value)}>
+          Submit
+        </button>
       </div>
     )
   }

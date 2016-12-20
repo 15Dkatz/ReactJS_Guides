@@ -2,13 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import CartItem from './CartItem'
 import { removeFromCart } from '../actions'
-// track the items in the Cart
-// calculate the dollars in the cart
 
 class Cart extends Component {
   calculateTotal() {
     let total = 0;
-    // let cart = this.props.cart;
     let {cart} = this.props
     for (let c = 0; c < cart.length; c++) {
       let item = cart[c];

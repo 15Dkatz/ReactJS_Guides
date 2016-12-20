@@ -5,9 +5,6 @@ import { ADD_TO_STOCK, ADD_TO_CART, RET_FROM_CART, CLEAR_STORE } from '../consta
 import initialGroceries from '../api/groceries'
 import { bake_cookie, read_cookie } from '../cookies'
 
-// helper function to calculate inventory
-
-// reduce stock helper method
 // third parameter is a boolean flag to reduce or add
 const changeStock = (groceries = [], groceryId, reduce) => {
   // return a new list of groceries with the stock of the groceryId reduced
@@ -48,7 +45,6 @@ const groceries = (state = initialGroceries, action) => {
       bake_cookie(cookie, newGroceries)
       return [...newGroceries]
     case ADD_TO_CART:
-      // console.log('action', action)
       newGroceries = changeStock(state, action.id, true)
       bake_cookie(cookie, newGroceries)
       return [...newGroceries] // TODO make these 3 lines 1

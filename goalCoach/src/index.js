@@ -26,3 +26,7 @@ render(
 // challenge portion features (if the above doesn't take enough time):
 // * give users the option of creating teams
 // * join multiple teams
+
+
+// TODO
+// look up redux router to dynamically send routes based on redux state
