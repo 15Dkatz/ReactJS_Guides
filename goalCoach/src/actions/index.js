@@ -5,6 +5,7 @@ import { firebaseApp } from '../firebase'
 function firebaseSuccess(user) {
   console.log('firebase success', user)
   let {email, uid} = user;
+
   return {
     type: types.SIGNED_IN,
     payload: {

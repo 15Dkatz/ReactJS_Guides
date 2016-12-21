@@ -6,6 +6,7 @@ import TodoItem from './TodoItem'
 
 class TodoList extends Component {
   render() {
+    console.log('props', this.props)
     return (
       <div>
         <h2>Todos</h2>
@@ -23,7 +24,8 @@ class TodoList extends Component {
 }
 
 function mapStateToProps(state) {
-  let {user, todos} = state;
+  console.log('state in mapStateToProps', state)
+  let {user, todos} = state.reducer;
   return {user, todos}
 }
 

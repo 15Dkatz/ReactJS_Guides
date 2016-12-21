@@ -32,7 +32,7 @@ class CompleteTodoList extends Component {
 
 function mapStateToProps(state) {
   return {
-    completeTodos: state.completeTodos
+    completeTodos: state.reducer.completeTodos
   }
 }
 

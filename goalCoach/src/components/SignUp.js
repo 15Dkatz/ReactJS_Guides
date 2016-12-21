@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { signUp } from '../actions'
+import { Link } from 'react-router'
 
 class SignUp extends Component {
   render() {
@@ -14,6 +15,10 @@ class SignUp extends Component {
         <button onClick={() => this.props.signUp(email.value, password.value)}>
           Sign Up
         </button>
+        {/*Link to signin*/}
+        <div>
+          <Link to={'/signin'}>Sign in</Link>
+        </div>
       </div>
     )
   }

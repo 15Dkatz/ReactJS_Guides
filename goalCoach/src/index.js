@@ -1,22 +1,52 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
+import { Router, Route, browserHistory } from 'react-router'
+import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import reducer from './reducers'
-
-import App from './containers/App'
-
 import thunkMiddleware from 'redux-thunk'
 
+import SignIn from './components/SignIn'
+import SignUp from './components/SignUp'
+import TodoDashboard from './containers/TodoDashboard'
 
 const store = createStore(
-  reducer,
+  combineReducers({
+    reducer,
+    routing: routerReducer
+  }),
   applyMiddleware(thunkMiddleware)
 )
 
+const history = syncHistoryWithStore(browserHistory, store)
+
+history.listen(location => {
+  console.log('new location', location)
+  // console.log('history', history)
+  console.log('store', store.getState())
+  // check for new redirect location in cookies
+
+  let signedIn = store.getState().reducer.user.signedIn;
+  let pathname = location.pathname;
+
+  console.log('signedIn', signedIn, 'pathname', pathname);
+  // if (!signedIn && pathname !== "/signin" && pathname !== "/signup") { // don't redirect on the signup page
+  //   console.log('redirect to signin')
+  //   history.go("/signin")
+  // }
+  if (signedIn) {
+    console.log('redirect to home')
+  }
+})
+
 render(
   <Provider store={store}>
-    <App/>
+    <Router path="/" history={history}>
+      <Route path="/signin" component={SignIn}/>
+      <Route path="/signup" component={SignUp}/>
+      <Route path="/dashboard" component={TodoDashboard}/>
+    </Router>
   </Provider>,
   document.getElementById('root')
 )
@@ -32,6 +62,11 @@ render(
 // challenge portion features (if the above doesn't take enough time):
 // * give users the option of creating teams
 // * join multiple teams
+
+// NOTE
+// * the todos and completed todos should exist in application state
+// * the signing in and out can simply exist in component state
+// * no need to pollute the application state with only component-concerned data
 
 
 // TODO
