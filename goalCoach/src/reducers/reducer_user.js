@@ -1,5 +1,5 @@
 // use SIGNEDIN and SIGNEDOUT from '../actions'
-import {SIGNED_IN, SIGNED_OUT} from '../actions';
+import {SIGNED_IN, SIGNED_OUT, ERROR} from '../constants';
 
 const user = {
   email: null,
@@ -10,6 +10,7 @@ const user = {
 export default (state = user, action) => {
   switch (action.type) {
     case SIGNED_IN:
+      console.log('signed in reducer')
       const {
         email, uid
       } = action.payload // make payload this object in the actual action
@@ -18,9 +19,7 @@ export default (state = user, action) => {
         uid,
         signedIn: true
       }
-      console.log('signed In reducer')
       return signedIn
-
     case SIGNED_OUT:
       // const loggedIn = {
       //   email: null,
@@ -29,6 +28,9 @@ export default (state = user, action) => {
       // }
       // return loggedIn
       return user // simpler to just return the user constant defined above
+    case ERROR:
+      console.log('error action ', action)
+      return state
     default:
       return state
   }

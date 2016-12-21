@@ -4,14 +4,14 @@ import { signUp } from '../actions'
 
 class SignUp extends Component {
   render() {
-    let email, password, confirm_password;
+    console.log('props', this.props)
+    let email, password;
     return (
       <div>
         <h2>Sign Up</h2>
         <input placeholder="email" type="text" ref={node => {email = node}}/>
         <input placeholder="password" type="password" ref={node => {password = node}}/>
-        <input placeholder="confirm password" type="password" ref={node => {confirm_password = node}}/>
-        <button onClick={() => this.props.signUp(email.value, password.value, confirm_password.value)}>
+        <button onClick={() => this.props.signUp(email.value, password.value)}>
           Sign Up
         </button>
       </div>
@@ -20,9 +20,7 @@ class SignUp extends Component {
 }
 
 function mapStateToProps(state) {
-  return {
-    user: state
-  }
+  return state
 }
 
 export default connect(mapStateToProps, { signUp })(SignUp)

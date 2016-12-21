@@ -1,14 +1,10 @@
 import * as types from '../constants'
-// import { firebaseApp } from '../firebase'
+import { firebaseApp } from '../firebase'
 // host the firebase functions within here
 
-// TODO export the authentication methods into another folder
-export function signUp(email, password, confirm_password) {
-  console.log('signUp action')
-  console.log('email', email, 'password', password, 'confirm_password', confirm_password)
-  let uid = '';
-
-  // firebaseApp.auth().createUser...
+function firebaseSuccess(user) {
+  console.log('firebase success', user)
+  let {email, uid} = user;
   return {
     type: types.SIGNED_IN,
     payload: {
@@ -18,17 +14,33 @@ export function signUp(email, password, confirm_password) {
   }
 }
 
+function firebaseError(error) {
+  console.log('firebaseError', error)
+  let {code} = error;
+  return {
+    type: types.ERROR,
+    code
+  }
+}
+
+// TODO export the authentication methods into another folder
+export function signUp(email, password) {
+  console.log('signUp action')
+  console.log('email', email, 'password', password)
+  return dispatch => {
+    return firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+      .then(user => dispatch(firebaseSuccess(user)))
+      .catch(error => dispatch(firebaseError(error)))
+  };
+}
+
 export function signIn(email, password) {
   console.log('signIn action')
   // firebaseApp.auth().signInWithEmailAndPassword...
-
-  let uid = '';
-  return {
-    type: types.SIGNED_IN,
-    payload: {
-      email,
-      uid
-    }
+  return dispatch => {
+    return firebaseApp.auth().signInWithEmailAndPassword(email, password)
+      .then(user => dispatch(firebaseSuccess(user)))
+      .catch(error => dispatch(firebaseError(error)))
   }
 }
 

@@ -1,12 +1,18 @@
 import React from 'react'
 import { render } from 'react-dom'
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 
 import App from './containers/App'
 
-const store = createStore(reducer)
+import thunkMiddleware from 'redux-thunk'
+
+
+const store = createStore(
+  reducer,
+  applyMiddleware(thunkMiddleware)
+)
 
 render(
   <Provider store={store}>
@@ -30,4 +36,5 @@ render(
 
 // TODO
 // look up redux router to dynamically send routes based on redux state
+// https://github.com/ReactTraining/react-router/blob/master/examples/auth-flow/app.js
 // clear completed
