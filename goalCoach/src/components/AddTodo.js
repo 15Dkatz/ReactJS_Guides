@@ -13,7 +13,7 @@ class AddTodo extends Component {
           type="text" placeholder="something to do"
           ref={node => text = node}
         />
-        <button onClick={() => this.props.addTodo(text.value, email)}>
+        <button onClick={() => this.props.addTodo(email, text.value)}>
           Submit
         </button>
       </div>

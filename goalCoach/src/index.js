@@ -70,6 +70,11 @@ render(
 // * no need to pollute the application state with only component-concerned data
 
 
+// NOTE on addTodoToServer
+// * necessary to separate the client side addTodoToServer
+// from the server side add todo
+// otherwise the normal todo would loop over and over again
+
 // TODO
 // style with Bootstrap
 // personalize to make the todos 'goals'

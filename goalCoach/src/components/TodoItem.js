@@ -6,11 +6,11 @@ import { completeTodo } from '../actions'
 class TodoItem extends Component {
   render() {
     console.log('props in TodoItem', this.props)
-    let {index, email, title} = this.props;
+    let {serverKey, email, title} = this.props;
     return (
       <div>
         {title} | submitted by: {email}
-        <button onClick={() => this.props.completeTodo(index, email, title)}>Complete</button>
+        <button onClick={() => this.props.completeTodo(serverKey, email, title)}>Complete</button>
       </div>
     )
   }

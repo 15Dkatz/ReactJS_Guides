@@ -5,6 +5,8 @@ export const SIGNED_IN = 'SIGNED_IN'
 export const ADD_TODO = 'ADD_TODO'
 export const COMPLETE_TODO = 'COMPLETE_TODO'
 
+export const ADD_TODO_TO_SERVER = 'ADD_TODO_TO_SERVER'
+
 export const CLEAR_COMPLETED = 'CLEAR_COMPLETED'
 
 export const REFRESH_TOKEN = 'REFRESH_TOKEN'

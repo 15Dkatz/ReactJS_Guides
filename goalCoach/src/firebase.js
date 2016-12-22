@@ -9,4 +9,5 @@ const config = {
 };
 
 export const firebaseApp = firebase.initializeApp(config);
-export const ref = firebase.database().ref();
+export const todoRef = firebase.database().ref('todos');
+export const completeTodoRef = firebase.database().ref('completeTodos');

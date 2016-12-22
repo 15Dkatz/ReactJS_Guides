@@ -10,21 +10,31 @@ export function logUser(email, uid) {
   }
 }
 
-export function addTodo(title, email) {
+export function addTodo(email, title) {
   return {
     type: types.ADD_TODO,
     payload: {
-      title,
-      email
+      email,
+      title
     }
   }
 }
 
-export function completeTodo(index, email, title) {
+// export function addTodoToServer(email, title) {
+//   return {
+//     type: types.ADD_TODO_TO_SERVER,
+//     payload: {
+//       email,
+//       title
+//     }
+//   }
+// }
+
+export function completeTodo(serverKey, email, title) {
   return {
     type: types.COMPLETE_TODO,
     payload: {
-      index,
+      serverKey,
       email,
       title
     }
