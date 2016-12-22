@@ -1,7 +1,7 @@
 import React from 'react'
-import AddTodo from '../components/AddTodo'
-import TodoList from '../components/TodoList'
-import CompleteTodoList from '../components/CompleteTodoList'
+import AddGoal from '../components/AddGoal'
+import GoalList from '../components/GoalList'
+import CompleteGoalList from '../components/CompleteGoalList'
 import { firebaseApp } from '../firebase'
 import { browserHistory } from 'react-router'
 
@@ -13,14 +13,14 @@ function signOut() {
   })
 }
 
-const TodoDashboard = () => (
+const GoalDashboard = () => (
     <div>
-      <h3>Todos</h3>
-      <AddTodo/>
-      <TodoList/>
+      <h3>Goals</h3>
+      <AddGoal/>
+      <GoalList/>
       <hr/>
-      <h3>Completed Todos</h3>
-      <CompleteTodoList/>
+      <h3>Completed Goals</h3>
+      <CompleteGoalList/>
       <hr/>
       <div>
         <button onClick={() => signOut()}>
@@ -30,4 +30,4 @@ const TodoDashboard = () => (
     </div>
 )
 
-export default TodoDashboard
+export default GoalDashboard

@@ -9,5 +9,5 @@ const config = {
 };
 
 export const firebaseApp = firebase.initializeApp(config);
-export const todoRef = firebase.database().ref('todos');
-export const completeTodoRef = firebase.database().ref('completeTodos');
+export const goalRef = firebase.database().ref('goals');
+export const completeGoalRef = firebase.database().ref('completeGoals');

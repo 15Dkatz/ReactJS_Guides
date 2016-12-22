@@ -10,9 +10,9 @@ export function logUser(email, uid) {
   }
 }
 
-export function addTodo(email, title) {
+export function addGoal(email, title) {
   return {
-    type: types.ADD_TODO,
+    type: types.ADD_GOAL,
     payload: {
       email,
       title
@@ -20,19 +20,9 @@ export function addTodo(email, title) {
   }
 }
 
-// export function addTodoToServer(email, title) {
-//   return {
-//     type: types.ADD_TODO_TO_SERVER,
-//     payload: {
-//       email,
-//       title
-//     }
-//   }
-// }
-
-export function completeTodo(serverKey, email, title) {
+export function completeGoal(serverKey, email, title) {
   return {
-    type: types.COMPLETE_TODO,
+    type: types.COMPLETE_GOAL,
     payload: {
       serverKey,
       email,

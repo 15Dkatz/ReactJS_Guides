@@ -2,13 +2,11 @@ export const LOG_AND_REDIRECT = 'LOG_AND_REDIRECT'
 
 export const SIGNED_IN = 'SIGNED_IN'
 
-export const ADD_TODO = 'ADD_TODO'
-export const COMPLETE_TODO = 'COMPLETE_TODO'
-
-export const ADD_TODO_TO_SERVER = 'ADD_TODO_TO_SERVER'
+export const ADD_GOAL = 'ADD_GOAL'
+export const COMPLETE_GOAL = 'COMPLETE_GOAL'
 
 export const CLEAR_COMPLETED = 'CLEAR_COMPLETED'
 
 export const REFRESH_TOKEN = 'REFRESH_TOKEN'
 
-// TODO redirect to the dashboard
+// GOAL redirect to the dashboard

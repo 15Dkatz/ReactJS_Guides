@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class CompleteTodoItem extends Component {
+class CompleteGoalItem extends Component {
   render() {
     let {title, email} = this.props
     return (
@@ -11,4 +11,4 @@ class CompleteTodoItem extends Component {
   }
  }
 
-export default CompleteTodoItem
+export default CompleteGoalItem
