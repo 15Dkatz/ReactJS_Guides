@@ -1,4 +1,4 @@
-import { ADD_TODO, CLEAR_TODO } from '../constants'
+import { ADD_TODO, COMPLETE_TODO } from '../constants'
 
 export default (state = [], action) => {
   let email, title, index;
@@ -7,7 +7,7 @@ export default (state = [], action) => {
       email = action.payload.email;
       title = action.payload.title;
       return [...state, {email, title}]
-    case CLEAR_TODO:
+    case COMPLETE_TODO:
       index = action.payload.index;
       // email = action.payload.email;
       // title = aciton.payload.title;

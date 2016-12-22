@@ -11,7 +11,7 @@ let user = {
 export default (state = user, action) => {
   switch (action.type) {
     case SIGNED_IN:
-      console.log('signed in reducer')
+      // console.log('signed in reducer')
       const {
         email, uid
       } = action.payload // make payload this object in the actual action

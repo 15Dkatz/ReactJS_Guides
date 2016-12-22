@@ -1,12 +1,34 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
-import { signIn } from '../actions/index'
+import { firebaseApp } from '../firebase'
 
 
 class SignIn extends Component {
-  componentWillUpdate() {
-    console.log('component updated', this.props)
+  constructor(props) {
+    super(props);
+    this.state = {}
+  }
+
+  signIn(email, password) {
+    firebaseApp.auth().signInWithEmailAndPassword(email, password)
+      .catch(error => {
+        console.log('error', error)
+        this.setState({error})
+      })
+    // export function signIn(email, password) {
+    //   console.log('signIn action')
+    //   // firebaseApp.auth().signInWithEmailAndPassword...
+    //   return dispatch => {
+    //     return firebaseApp.auth().signInWithEmailAndPassword(email, password)
+    //       .then(user => {
+    //         dispatch(firebaseSuccess(user))
+    //         console.log('pushing to dashboard')
+    //         // browserHistory.push('/dashboard')
+    //       })
+    //       .catch(error => dispatch(firebaseError(error)))
+    //   }
+    // }
   }
 
   render() {
@@ -17,16 +39,19 @@ class SignIn extends Component {
         <h2>Sign In</h2>
         <input type="text" placeholder="email" ref={node => {email = node}}/>
         <input type="password" placeholder="password" ref={node => {password = node}}/>
-        {/*TODO re-direct link to the signup component*/}
         <button
           onClick={() => {
-            this.props.signIn(email.value, password.value);
-            // this.props.router.go("/dashboard")
+            this.signIn(email.value, password.value);
           }}>
           Sign In
         </button>
+        {
+          this.state.error != null ?
+          <div>{this.state.error.message}</div> :
+          <span style={{display: 'none'}}></span>
+        }
         <div>
-          <Link to={'/signup'}>Sign Up</Link>
+          <Link to={'/signup'}>Sign up instead</Link>
         </div>
       </div>
     )
@@ -37,7 +62,7 @@ function mapStateToProps(state) {
   return {user: state.reducer.user}
 }
 
-export default connect(mapStateToProps, { signIn })(SignIn);
+export default connect(mapStateToProps, null)(SignIn);
 
 // next step: log the information from the form to an action
 // TODO style with Bootstrap

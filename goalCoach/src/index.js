@@ -6,6 +6,8 @@ import { Router, Route, browserHistory } from 'react-router'
 import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
 import reducer from './reducers'
 import thunkMiddleware from 'redux-thunk'
+import { firebaseApp } from './firebase'
+import { logUser } from './actions'
 
 import SignIn from './components/SignIn'
 import SignUp from './components/SignUp'
@@ -20,23 +22,22 @@ const store = createStore(
 )
 
 const history = syncHistoryWithStore(browserHistory, store)
-
+// TODO redirect on unauthed
 history.listen(location => {
   console.log('new location', location)
-  // console.log('history', history)
-  console.log('store', store.getState())
-  // check for new redirect location in cookies
-
   let signedIn = store.getState().reducer.user.signedIn;
   let pathname = location.pathname;
+  if (!signedIn && pathname !== '/signin' && pathname !== '/signup') {
+    browserHistory.replace('/signin')
+  }
+})
 
-  console.log('signedIn', signedIn, 'pathname', pathname);
-  // if (!signedIn && pathname !== "/signin" && pathname !== "/signup") { // don't redirect on the signup page
-  //   console.log('redirect to signin')
-  //   history.go("/signin")
-  // }
-  if (signedIn) {
-    console.log('redirect to home')
+
+firebaseApp.auth().onAuthStateChanged(user => {
+  if (user) {
+    let {email, uid} = user;
+    store.dispatch(logUser(email, uid))
+    browserHistory.push('/dashboard')
   }
 })
 
@@ -70,6 +71,5 @@ render(
 
 
 // TODO
-// look up redux router to dynamically send routes based on redux state
-// https://github.com/ReactTraining/react-router/blob/master/examples/auth-flow/app.js
-// clear completed
+// show error messages on signIn and signUp pages
+// store the refreshToken in cookies, and then authenticate based on token on reload
