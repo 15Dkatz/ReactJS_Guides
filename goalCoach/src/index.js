@@ -71,5 +71,4 @@ render(
 
 
 // TODO
-// show error messages on signIn and signUp pages
-// store the refreshToken in cookies, and then authenticate based on token on reload
+// style with Bootstrap

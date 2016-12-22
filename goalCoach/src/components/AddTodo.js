@@ -5,7 +5,7 @@ import { addTodo } from '../actions'
 class AddTodo extends Component {
   render() {
     let text;
-    let email = this.props.user.email; // TODO grab the email from props once authentication is up
+    let email = this.props.user.email;
     return (
       <div>
         <h4>Add a todo</h4>

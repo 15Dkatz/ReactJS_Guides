@@ -9,9 +9,6 @@ export default (state = [], action) => {
       return [...state, {email, title}]
     case COMPLETE_TODO:
       index = action.payload.index;
-      // email = action.payload.email;
-      // title = aciton.payload.title;
-      console.log('remove todo with index', index);
       let newTodos = state.slice(0, index).concat(state.slice(index+1, state.length))
       return [...newTodos];
     default:

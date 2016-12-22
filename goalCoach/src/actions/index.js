@@ -1,5 +1,4 @@
 import * as types from '../constants'
-// host the firebase functions within here
 
 export function logUser(email, uid) {
   return {
@@ -8,13 +7,6 @@ export function logUser(email, uid) {
       email,
       uid
     }
-  }
-}
-
-export function signOut() {
-  return {
-    type: types.SIGNED_OUT,
-    payload: {}
   }
 }
 

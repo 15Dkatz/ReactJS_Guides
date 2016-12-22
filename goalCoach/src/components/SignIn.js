@@ -16,19 +16,6 @@ class SignIn extends Component {
         console.log('error', error)
         this.setState({error})
       })
-    // export function signIn(email, password) {
-    //   console.log('signIn action')
-    //   // firebaseApp.auth().signInWithEmailAndPassword...
-    //   return dispatch => {
-    //     return firebaseApp.auth().signInWithEmailAndPassword(email, password)
-    //       .then(user => {
-    //         dispatch(firebaseSuccess(user))
-    //         console.log('pushing to dashboard')
-    //         // browserHistory.push('/dashboard')
-    //       })
-    //       .catch(error => dispatch(firebaseError(error)))
-    //   }
-    // }
   }
 
   render() {
@@ -63,6 +50,3 @@ function mapStateToProps(state) {
 }
 
 export default connect(mapStateToProps, null)(SignIn);
-
-// next step: log the information from the form to an action
-// TODO style with Bootstrap

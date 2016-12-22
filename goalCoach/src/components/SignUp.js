@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { firebaseApp } from '../firebase'
 
@@ -38,8 +37,4 @@ class SignUp extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return state
-}
-
-export default connect(mapStateToProps, null)(SignUp)
+export default Signup
