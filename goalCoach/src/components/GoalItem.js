@@ -9,8 +9,8 @@ class GoalItem extends Component {
     let {serverKey, email, title} = this.props;
     return (
       <div style={{margin: '2px'}}>
-        <div><strong>{title}</strong></div>
-        <span style={{marginRight: '2px'}}><em>submitted by {email}</em></span>
+        <strong>{title}</strong>
+        <span style={{marginRight: '2px'}}> submitted by<em>{email}</em></span>
         <button
           onClick={() => this.props.completeGoal(serverKey, email, title)}
           className="btn btn-sm btn-primary"
