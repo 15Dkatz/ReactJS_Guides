@@ -7,16 +7,23 @@ class AddGoal extends Component {
     let text;
     let email = this.props.user.email;
     return (
-      <div>
-        <h4>Add a goal</h4>
-        <input
-          type="text" placeholder="something to do"
-          ref={node => text = node}
-        />
-        <button onClick={() => this.props.addGoal(email, text.value)}>
-          Submit
-        </button>
-      </div>
+      <form className="form-inline">
+        <div className="form-group">
+          <input
+            type="text" placeholder="Add a goal"
+            ref={node => text = node}
+            className="form-control"
+            style={{marginRight: '5px'}}
+          />
+          <button
+            onClick={() => this.props.addGoal(email, text.value)}
+            className="btn btn-success"
+            type="button"
+          >
+            Submit
+          </button>
+        </div>
+      </form>
     )
   }
 }

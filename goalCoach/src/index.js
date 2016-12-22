@@ -22,7 +22,7 @@ const store = createStore(
 )
 
 const history = syncHistoryWithStore(browserHistory, store)
-// TODO redirect on unauthed
+
 history.listen(location => {
   console.log('new location', location)
   let signedIn = store.getState().reducer.user.signedIn;
@@ -82,3 +82,4 @@ render(
 // be able to make teams of users to assign goals to
 // have a feed of signedIn users and assign goals to specific users
 // have a dashboard of your specific goals
+// add a forgot password link that routes to another page

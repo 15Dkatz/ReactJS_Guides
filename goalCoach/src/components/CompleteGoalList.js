@@ -41,7 +41,10 @@ class CompleteGoalList extends Component {
         )}
         {
           this.state.completeGoals.length > 0 ?
-          <button onClick={() => this.props.clearCompleted()}>
+          <button
+            onClick={() => this.props.clearCompleted()}
+            className="btn btn-primary"
+          >
             Clear Completed
           </button> :
           <span style={{display: 'none'}}></span>

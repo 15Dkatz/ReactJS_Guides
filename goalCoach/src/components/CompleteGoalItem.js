@@ -5,7 +5,7 @@ class CompleteGoalItem extends Component {
     let {title, email} = this.props
     return (
       <div>
-        {title} | completed by: {email}
+        <strong>{title}</strong> completed by <em>{email}</em>
       </div>
     )
   }

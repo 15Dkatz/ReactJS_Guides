@@ -8,9 +8,15 @@ class GoalItem extends Component {
     console.log('props in GoalItem', this.props)
     let {serverKey, email, title} = this.props;
     return (
-      <div>
-        {title} | submitted by: {email}
-        <button onClick={() => this.props.completeGoal(serverKey, email, title)}>Complete</button>
+      <div style={{margin: '2px'}}>
+        <div><strong>{title}</strong></div>
+        <span style={{marginRight: '2px'}}><em>submitted by {email}</em></span>
+        <button
+          onClick={() => this.props.completeGoal(serverKey, email, title)}
+          className="btn btn-sm btn-primary"
+        >
+          Complete
+        </button>
       </div>
     )
   }

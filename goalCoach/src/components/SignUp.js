@@ -17,11 +17,14 @@ class SignUp extends Component {
   render() {
     let email, password;
     return (
-      <div>
+      <form style={{margin: '5%'}}>
         <h2>Sign Up</h2>
         <input placeholder="email" type="text" ref={node => {email = node}}/>
         <input placeholder="password" type="password" ref={node => {password = node}}/>
-        <button onClick={() => this.signUp(email.value, password.value)}>
+        <button
+          onClick={() => this.signUp(email.value, password.value)}
+          className="btn btn-primary"
+        >
           Sign Up
         </button>
         {
@@ -32,7 +35,7 @@ class SignUp extends Component {
         <div>
           <Link to={'/signin'}>Sign in instead</Link>
         </div>
-      </div>
+      </form>
     )
   }
 }

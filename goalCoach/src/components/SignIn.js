@@ -22,16 +22,18 @@ class SignIn extends Component {
     let email, password;
 
     return (
-      <div>
+      <form style={{padding: '5%'}} className="form-inline">
         <h2>Sign In</h2>
-        <input type="text" placeholder="email" ref={node => {email = node}}/>
-        <input type="password" placeholder="password" ref={node => {password = node}}/>
-        <button
-          onClick={() => {
-            this.signIn(email.value, password.value);
-          }}>
-          Sign In
-        </button>
+        <div className="form-group">
+          <input className="form-control" style={{marginRight: '5px'}} type="text" placeholder="email" ref={node => {email = node}}/>
+          <input className="form-control" style={{marginRight: '5px'}} type="password" placeholder="password" ref={node => {password = node}}/>
+          <button
+            onClick={() => {this.signIn(email.value, password.value)}}
+            className="btn btn-primary"
+          >
+            Sign In
+          </button>
+        </div>
         {
           this.state.error != null ?
           <div>{this.state.error.message}</div> :
@@ -40,7 +42,7 @@ class SignIn extends Component {
         <div>
           <Link to={'/signup'}>Sign up instead</Link>
         </div>
-      </div>
+      </form>
     )
   }
 }
