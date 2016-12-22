@@ -9,6 +9,6 @@ class CompleteTodoItem extends Component {
       </div>
     )
   }
-}
+ }
 
 export default CompleteTodoItem

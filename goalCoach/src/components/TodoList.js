@@ -8,7 +8,6 @@ class TodoList extends Component {
   render() {
     return (
       <div>
-        <h2>Todos</h2>
         {this.props.todos.map((todo, index) =>
           <TodoItem
             key={index}

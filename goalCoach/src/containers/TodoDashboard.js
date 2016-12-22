@@ -15,9 +15,11 @@ function signOut() {
 
 const TodoDashboard = () => (
     <div>
+      <h3>Todos</h3>
       <AddTodo/>
       <TodoList/>
       <hr/>
+      <h3>Completed Todos</h3>
       <CompleteTodoList/>
       <hr/>
       <div>

@@ -72,3 +72,10 @@ render(
 
 // TODO
 // style with Bootstrap
+// personalize to make the todos 'goals'
+// rename todos to goals
+
+// NOTE CHALLENGE portion
+// be able to make teams of users to assign goals to
+// have a feed of signedIn users and assign goals to specific users
+// have a dashboard of your specific goals

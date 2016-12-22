@@ -7,9 +7,6 @@ class CompleteTodoList extends Component {
   render() {
     return (
       <div>
-        <h3>
-          Completed Todos
-        </h3>
         {this.props.completeTodos.map((completeTodo, index) =>
           <CompleteTodoItem
             key={index}
