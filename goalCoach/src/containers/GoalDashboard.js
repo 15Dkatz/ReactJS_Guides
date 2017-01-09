@@ -16,11 +16,11 @@ function signOut() {
 const GoalDashboard = () => (
     <div style={{padding: '5%'}}>
       <h3>Goals</h3>
-      <AddGoal/>
-      <GoalList/>
+      <AddGoal />
+      <GoalList />
       <hr/>
       <h4>Completed Goals</h4>
-      <CompleteGoalList/>
+      <CompleteGoalList />
       <hr/>
       <div>
         <button onClick={() => signOut()} className="btn btn-danger">

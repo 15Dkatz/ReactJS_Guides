@@ -2,9 +2,6 @@ import { COMPLETE_GOAL, CLEAR_COMPLETED } from '../constants'
 import { completeGoalRef } from '../firebase'
 
 export default (state = [], action) => {
-
-  // use a firebase helper to initialize the state with the data in firebase
-
   switch(action.type) {
     case COMPLETE_GOAL:
       console.log('add to list of complete goals with action', action)

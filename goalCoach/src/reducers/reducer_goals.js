@@ -11,7 +11,7 @@ export default (state = [], action) => {
     case COMPLETE_GOAL:
       let serverKey = action.payload.serverKey;
       goalRef.child(serverKey).remove()
-      return [...state];
+      return [...state]; // explain with Babel transpiler that the spread operator is the same as Object.assign({}) // really illustrate the spread operator
     default:
       return state;
   }

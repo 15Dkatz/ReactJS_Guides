@@ -4,26 +4,47 @@ import { firebaseApp } from '../firebase'
 
 class SignUp extends Component {
   constructor(props) {
-    super(props)
-    this.state = {}
+    super(props);
+    this.state = {
+      email: '',
+      password: '',
+      error: {
+        message: '' // test by filling this string with something like 'sign up error' to show off the error form
+      }
+    }
   }
 
-  signUp(email, password) {
+  signUp() {
+    let { email, password } = this.state;
     console.log('called signup', email, password)
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
-      .catch(error => this.setState(error))
+      .catch(error => {
+        console.log('error', error);
+        this.setState({error});
+      })
   }
 
   render() {
-    let email, password;
     return (
-      <form style={{margin: '5%'}} className="form-inline">
+      <div style={{margin: '5%'}} className="form-inline">
         <h2>Sign Up</h2>
         <div className="form-group">
-          <input className="form-control" style={{marginRight: '5px'}} type="text" placeholder="email" ref={node => {email = node}}/>
-          <input className="form-control" style={{marginRight: '5px'}} type="password" placeholder="password" ref={node => {password = node}}/>
+          <input
+            className="form-control"
+            style={{marginRight: '5px'}}
+            type="text"
+            placeholder="email"
+            onChange={event => this.setState({email: event.target.value})}
+          />
+          <input
+            className="form-control"
+            style={{marginRight: '5px'}}
+            type="password"
+            placeholder="password"
+            onChange={event => this.setState({password: event.target.value})}
+          />
           <button
-            onClick={() => this.signUp(email.value, password.value)}
+            onClick={() => this.signUp()}
             className="btn btn-primary"
             type="button"
           >
@@ -31,14 +52,12 @@ class SignUp extends Component {
           </button>
         </div>
         {
-          this.state.error != null ?
-          <div>{this.state.error.message}</div> :
-          <span style={{display: 'none'}}></span>
+          <div>{this.state.error.message}</div>
         }
         <div>
           <Link to={'/signin'}>Sign in instead</Link>
         </div>
-      </form>
+      </div>
     )
   }
 }

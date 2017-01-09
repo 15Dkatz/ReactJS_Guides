@@ -18,11 +18,12 @@ class GoalList extends Component {
     ref.on('value', snap => {
       let goals = [];
       snap.forEach(goal => {
-        let {email, title} = goal.val();
+        let { email, title } = goal.val();
+        let { key } = goal;
         goals.push({
           email,
           title,
-          key: goal.key
+          key
         })
       })
       this.setState({goals})
@@ -30,17 +31,23 @@ class GoalList extends Component {
   }
 
   render() {
-    // goal figure out how to show a loader
+    // TODO show a loader
     return (
       <div>
-        {this.state.goals.map((goal, index) =>
-          <GoalItem
-            key={goal.key}
-            serverKey={goal.key}
-            title={goal.title}
-            email={goal.email}
-          />
-        )}
+        {
+          this.state.goals.map(goal => {
+            let {key, title, email} = goal;
+            return (
+              <GoalItem
+                key={key}
+                serverKey={key}
+                title={title}
+                email={email}
+              />
+            )
+          }
+        )
+      }
       </div>
     )
   }

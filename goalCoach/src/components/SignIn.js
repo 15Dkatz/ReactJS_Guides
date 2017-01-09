@@ -5,12 +5,16 @@ import { firebaseApp } from '../firebase'
 
 
 class SignIn extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {}
+  state = { // explain that declaring a variable here becomes a class member
+    email: '',
+    password: '',
+    error: ''
   }
 
-  signIn(email, password) {
+
+  signIn() {
+    let { email, password } = this.state;
+    console.log('email', email, 'password', password);
     firebaseApp.auth().signInWithEmailAndPassword(email, password)
       .catch(error => {
         console.log('error', error)
@@ -19,36 +23,45 @@ class SignIn extends Component {
   }
 
   render() {
-    let email, password;
-
     return (
-      <form style={{padding: '5%'}} className="form-inline">
+      <div style={{padding: '5%'}} className="form-inline">
         <h2>Sign In</h2>
         <div className="form-group">
-          <input className="form-control" style={{marginRight: '5px'}} type="text" placeholder="email" ref={node => {email = node}}/>
-          <input className="form-control" style={{marginRight: '5px'}} type="password" placeholder="password" ref={node => {password = node}}/>
+          <input
+            className="form-control"
+            style={{marginRight: '5px'}}
+            type="text"
+            placeholder="email"
+            onChange={event => this.setState({email: event.target.value})}
+          />
+          <input
+            className="form-control"
+            style={{marginRight: '5px'}}
+            type="password"
+            placeholder="password"
+            onChange={event => this.setState({password: event.target.value})}
+          />
           <button
-            onClick={() => {this.signIn(email.value, password.value)}}
+            onClick={() => this.signIn()}
             className="btn btn-primary"
           >
             Sign In
           </button>
         </div>
         {
-          this.state.error != null ?
-          <div>{this.state.error.message}</div> :
-          <span style={{display: 'none'}}></span>
+          <div>{this.state.error.message}</div>
         }
         <div>
           <Link to={'/signup'}>Sign up instead</Link>
         </div>
-      </form>
+      </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  return {user: state.reducer.user}
+  let { user } = state.reducer; // this should just be state not state.reducer... TODO fix
+  return {user}
 }
 
 export default connect(mapStateToProps, null)(SignIn);

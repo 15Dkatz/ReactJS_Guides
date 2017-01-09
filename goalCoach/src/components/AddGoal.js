@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { addGoal } from '../actions'
 
 class AddGoal extends Component {
+  // TODO change to onChange and net ref
   render() {
     let text;
     let email = this.props.user.email;

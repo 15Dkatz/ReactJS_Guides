@@ -24,7 +24,7 @@ const store = createStore(
 const history = syncHistoryWithStore(browserHistory, store)
 
 history.listen(location => {
-  console.log('new location', location)
+  // console.log('new location', location)
   let signedIn = store.getState().reducer.user.signedIn;
   let pathname = location.pathname;
   if (!signedIn && pathname !== '/signin' && pathname !== '/signup') {
@@ -35,6 +35,7 @@ history.listen(location => {
 
 firebaseApp.auth().onAuthStateChanged(user => {
   if (user) {
+    // console.log('user', user);
     let {email, uid} = user;
     store.dispatch(logUser(email, uid))
     browserHistory.push('/dashboard')
@@ -74,9 +75,6 @@ render(
 // * necessary to separate the client side addGoalToServer
 // from the server side add Goal
 // otherwise the normal Goal would loop over and over again
-
-// TODO
-// style with Bootstrap
 
 // NOTE CHALLENGE portion
 // be able to make teams of users to assign goals to
