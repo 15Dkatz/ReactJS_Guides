@@ -23,7 +23,9 @@ class App extends Component {
             type="text"
             className="deadline-input"
             value={this.state.newDeadline}
-            onChange={event => this.setState({newDeadline: event.target.value})}></FormControl>
+            onChange={event => this.setState({newDeadline: event.target.value})}
+          >
+          </FormControl>
           <Button onClick={() => this.changeDeadline()}>
             Change Deadline
           </Button>
