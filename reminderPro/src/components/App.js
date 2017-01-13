@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import { addReminder, deleteReminder, clearReminders } from '../actions/index'
 import moment from 'moment'
+import '../App.css';
 
 class App extends Component {
   renderReminders() {

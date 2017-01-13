@@ -4,10 +4,10 @@ import { Provider } from 'react-redux'
 import { createStore } from 'redux'
 import App from './components/App'
 
-import ReminderReducer from './reducers/reducer_reminders'
+import reducer from './reducers/reducer_reminders'
 
 // extract store into helper method later
-let store = createStore(ReminderReducer)
+let store = createStore(reducer)
 
 render(
   <Provider store={store}>

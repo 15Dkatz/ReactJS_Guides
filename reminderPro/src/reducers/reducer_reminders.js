@@ -1,7 +1,6 @@
 // reducers return a piece of the state in a function
 // remember to keep them pure!
 import {ADD_REMINDER, CLEAR_REMINDERS, DELETE_REMINDER} from '../constants'
-// import cookie from 'react-cookie'
 import {bake_cookie, read_cookie, delete_cookie} from '../helpers/cookies'
 
 const reminder = (state = {}, action) => {
