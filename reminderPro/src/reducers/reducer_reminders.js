@@ -23,13 +23,14 @@ const reminder = (action) => {
 
 
 const removeById = (state = [], id) => {
-  for (var i in state) {
-    if (state[i].id === id) {
-      state.splice(i, 1); // remove
-      break;
-    }
-  }
-  return state;
+  const reminders = state.filter(reminder => {
+    console.log('reminder.id === id', reminder.id === id);
+    return (
+      reminder.id !== id
+    )
+  });
+  console.log('new reminders', reminders);
+  return reminders;
 }
 
 const reminders = (state = [], action) => {
