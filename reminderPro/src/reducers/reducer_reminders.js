@@ -4,12 +4,11 @@ import {ADD_REMINDER, CLEAR_REMINDERS, DELETE_REMINDER} from '../constants'
 import {bake_cookie, read_cookie, delete_cookie} from '../helpers/cookies'
 
 const reminder = (action) => {
-  let dueDate = new Date().toString();
-  dueDate = action.dueDate ? action.dueDate : dueDate;
+  let { text, dueDate } = action;
   return {
-    text: action.text,
-    dueDate: dueDate,
-    id: Math.random()
+    id: Math.random(),
+    text,
+    dueDate
   }
 }
 
