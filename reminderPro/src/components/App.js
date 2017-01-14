@@ -7,49 +7,76 @@ import moment from 'moment'
 import '../App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: '',
+      dueDate: ''
+    }
+  }
+
+  addReminder() {
+    console.log("this.state", this.state);
+    const { text, dueDate } = this.state;
+    this.props.addReminder(text, dueDate); 
+  }
+
   renderReminders() {
-    let reminders = this.props.reminders
-
-
-    return reminders.map((reminder) => {
-      return (
-        <li key={reminder.id} className="list-group-item">
-          <div className="list-item">
-            <div>{reminder.text}</div>
-            <div><em>{moment(new Date(reminder.dueDate)).fromNow()}</em></div>
-          </div>
-          <div
-            onClick={() => this.props.deleteReminder(reminder.id)}
-            className="delete-button list-item"
-          >&#x2715;</div>
-        </li>
-      )
-    })
+    const reminders = this.props.reminders;
+    return (
+      <ul className="list-group col-sm-4">
+      {
+        reminders.map((reminder) => {
+          return (
+            <li key={reminder.id} className="list-group-item">
+              <div className="list-item">
+                <div>{reminder.text}</div>
+                <div><em>{moment(new Date(reminder.dueDate)).fromNow()}</em></div>
+              </div>
+              <div
+                onClick={() => this.props.deleteReminder(reminder.id)}
+                className="delete-button list-item"
+              >
+                &#x2715;
+              </div>
+            </li>
+          )
+        })
+      }
+      </ul>
+    )
   }
 
   render() {
-    console.log('props', this.props)
-
-    let text;
-    let dueDate;
-
+    // console.log('props', this.props);
     return (
       <div className="App">
         <div className="title">
-          Reminders
+          Reminder Pro
         </div>
         <form className="form-inline">
-          <div className="form-group">
-            <input ref={node => {text = node}} placeholder='I have to...' className="form-control"/>
-            <input type="datetime-local"  className="form-control" ref={node => {dueDate = node}}/>
+          <div className="form-group row">
+            <input
+              placeholder='I have to...' 
+              className="form-control"
+              onChange={event => this.setState({text: event.target.value})}
+            />
+            <input 
+              type="datetime-local"  
+              className="form-control" 
+              onChange={event => this.setState({dueDate: event.target.value})}
+            />
+
+            <button 
+              type="button" 
+              className="btn btn-success" 
+              onClick={() => this.addReminder()}
+            >
+              Add Reminder
+            </button>
           </div>
-          <button type="button" className="btn btn-success" onClick={() => {this.props.addReminder(text.value, dueDate.value); console.log("typeof dueDate.value", typeof(dueDate.value))}}>
-            Add Reminder
-          </button>
         </form>
-        <ul className="list-group col-sm-4">
-          {this.renderReminders()}
-        </ul>
+        {this.renderReminders()}
         <button className="btn btn-danger" onClick={() => {this.props.clearReminders()}}>
           Clear Reminders
         </button>
