@@ -4,20 +4,13 @@ import {ADD_REMINDER, CLEAR_REMINDERS, DELETE_REMINDER} from '../constants'
 import {bake_cookie, read_cookie, delete_cookie} from '../helpers/cookies'
 
 const reminder = (action) => {
-  // switch (action.type) {
-  //   case ADD_REMINDER:
-    let dueDate = new Date().toString();
-    dueDate = action.dueDate ? action.dueDate : dueDate;
-    // let dueDate = new Date(action.dueDate) || ; // make sure it's not null
-    return {
-      text: action.text,
-      dueDate: dueDate,
-      id: Math.random()
-      }
-    // TODO figure out why the initial state parameter is necessary
-  //   default:
-  //     return state
-  // }
+  let dueDate = new Date().toString();
+  dueDate = action.dueDate ? action.dueDate : dueDate;
+  return {
+    text: action.text,
+    dueDate: dueDate,
+    id: Math.random()
+  }
 }
 
 
