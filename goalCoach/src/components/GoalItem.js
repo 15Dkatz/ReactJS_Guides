@@ -28,7 +28,7 @@ class GoalItem extends Component {
 
 // necessary to get the current user
 function mapStateToProps(state) {
-  const { user } = state.reducer;
+  const { user } = state;
   return {
     user
   }

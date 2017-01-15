@@ -53,8 +53,9 @@ class CompleteGoalList extends Component {
 }
 
 function mapStateToProps(state) {
+  const { completeGoals } = state;
   return {
-    completeGoals: state.reducer.completeGoals
+    completeGoals
   }
 }
 

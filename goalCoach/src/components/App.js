@@ -3,14 +3,9 @@ import AddGoal from './AddGoal';
 import GoalList from './GoalList';
 import CompleteGoalList from './CompleteGoalList';
 import { firebaseApp } from '../firebase';
-import { browserHistory } from 'react-router';
 
 function signOut() {
-  firebaseApp.auth().signOut().then(() => {
-    browserHistory.replace('/signin')
-  }, error => {
-    console.log('error', error)
-  })
+  firebaseApp.auth().signOut();
 }
 
 const App = () => (
