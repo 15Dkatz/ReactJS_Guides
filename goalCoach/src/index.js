@@ -17,9 +17,10 @@ const store = createStore(combineReducers({reducer, routing: routerReducer}));
 firebaseApp.auth().onAuthStateChanged(user => {
   if (user) {
     let {email, uid} = user;
-    store.dispatch(logUser(email, uid));
+    store.dispatch(logUser(email, uid)); // dispatches the logUser action to the reducers
     browserHistory.push('/app');
   } else {
+    // handling logouts
     browserHistory.replace('/signin');
   }
 })
