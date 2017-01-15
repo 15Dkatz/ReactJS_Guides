@@ -1,9 +1,9 @@
-import React from 'react'
-import AddGoal from './AddGoal'
-import GoalList from './GoalList'
-import CompleteGoalList from './CompleteGoalList'
-import { firebaseApp } from '../firebase'
-import { browserHistory } from 'react-router'
+import React from 'react';
+import AddGoal from './AddGoal';
+import GoalList from './GoalList';
+import CompleteGoalList from './CompleteGoalList';
+import { firebaseApp } from '../firebase';
+import { browserHistory } from 'react-router';
 
 function signOut() {
   firebaseApp.auth().signOut().then(() => {

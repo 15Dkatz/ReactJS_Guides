@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { goalRef } from '../firebase'
-import GoalItem from './GoalItem'
+import React, { Component } from 'react';
+import { goalRef } from '../firebase';
+import GoalItem from './GoalItem';
 
 class GoalList extends Component {
   constructor(props) {

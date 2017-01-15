@@ -1,16 +1,16 @@
-import React from 'react'
-import { render } from 'react-dom'
-import { createStore, combineReducers } from 'redux'
-import { Provider } from 'react-redux'
-import { Router, Route, browserHistory } from 'react-router'
-import { routerReducer } from 'react-router-redux'
-import reducer from './reducers'
-import { firebaseApp } from './firebase'
-import { logUser } from './actions'
+import React from 'react';
+import { render } from 'react-dom';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import { Router, Route, browserHistory } from 'react-router';
+import { routerReducer } from 'react-router-redux';
+import { firebaseApp } from './firebase';
+import { logUser } from './actions';
+import reducer from './reducers';
 
-import SignIn from './components/SignIn'
-import SignUp from './components/SignUp'
-import App from './components/App'
+import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+import App from './components/App';
 
 const store = createStore(combineReducers({reducer, routing: routerReducer}));
 

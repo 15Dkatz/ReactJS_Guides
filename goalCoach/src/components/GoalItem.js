@@ -1,9 +1,14 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { completeGoal } from '../actions'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { completeGoal } from '../actions';
 
 
 class GoalItem extends Component {
+  completeGoal(serverKey, title) {
+    let currentUser = this.props.user;
+    this.props.completeGoal(serverKey, currentUser.email, title);
+  }
+
   render() {
     const { serverKey, email, title } = this.props;
     return (
@@ -11,7 +16,7 @@ class GoalItem extends Component {
         <strong>{title}</strong>
         <span style={{marginRight: '5px'}}> submitted by <em>{email}</em></span>
         <button
-          onClick={() => this.props.completeGoal(serverKey, email, title)}
+          onClick={() => this.completeGoal(serverKey, title)}
           className="btn btn-sm btn-primary"
         >
           Complete
@@ -21,4 +26,12 @@ class GoalItem extends Component {
   }
 }
 
-export default connect(null, { completeGoal })(GoalItem)
+// necessary to get the current user
+function mapStateToProps(state) {
+  const { user } = state.reducer;
+  return {
+    user
+  }
+}
+
+export default connect(mapStateToProps, { completeGoal })(GoalItem)
