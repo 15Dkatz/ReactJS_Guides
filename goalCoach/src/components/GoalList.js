@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-
-import GoalItem from './GoalItem'
 import { goalRef } from '../firebase'
+import GoalItem from './GoalItem'
 
 class GoalList extends Component {
   constructor(props) {
@@ -31,7 +29,6 @@ class GoalList extends Component {
   }
 
   render() {
-    // TODO show a loader
     return (
       <div>
         {
@@ -53,9 +50,4 @@ class GoalList extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  let {user, goals} = state.reducer;
-  return {user, goals}
-}
-
-export default connect(mapStateToProps, null)(GoalList)
+export default GoalList;

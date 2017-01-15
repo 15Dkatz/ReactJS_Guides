@@ -11,7 +11,8 @@
     "react-cookie": "^1.0.4",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",
-    "redux": "^3.6.0"
+    "redux": "^3.6.0",
+    "sfcookies": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",

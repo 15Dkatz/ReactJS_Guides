@@ -3,21 +3,26 @@ import { connect } from 'react-redux'
 import { addGoal } from '../actions'
 
 class AddGoal extends Component {
-  // TODO change to onChange and net ref
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: ''
+    }
+  }
+
   render() {
-    let text;
-    let email = this.props.user.email;
+    const { email } = this.props.user;
     return (
       <form className="form-inline">
         <div className="form-group">
           <input
             type="text" placeholder="Add a goal"
-            ref={node => text = node}
+            onChange={event => this.setState({text: event.target.value})}
             className="form-control"
             style={{marginRight: '5px'}}
           />
           <button
-            onClick={() => this.props.addGoal(email, text.value)}
+            onClick={() => this.props.addGoal(email, this.state.text)}
             className="btn btn-success"
             type="button"
           >
@@ -30,8 +35,9 @@ class AddGoal extends Component {
 }
 
 function mapStateToProps(state) {
+  const { user } = state.reducer;
   return {
-    user: state.reducer.user
+    user
   }
 }
 

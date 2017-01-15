@@ -1,7 +1,7 @@
 // reducers return a piece of the state in a function
 // remember to keep them pure!
-import {ADD_REMINDER, CLEAR_REMINDERS, DELETE_REMINDER} from '../constants'
-import {bake_cookie, read_cookie, delete_cookie} from '../helpers/cookies'
+import { ADD_REMINDER, CLEAR_REMINDERS, DELETE_REMINDER } from '../constants'
+import { bake_cookie, read_cookie, delete_cookie } from 'sfcookies'
 
 const reminder = (action) => {
   let { text, dueDate } = action;
@@ -30,8 +30,7 @@ const reminders = (state = [], action) => {
   // if reminders exists in cookies, set reminders to cookies
   let reminders = null;
   // make sure the cookies reminders are set to state
-  reminders = read_cookie('reminders');
-  state = reminders;
+  state = read_cookie('reminders');
   // necessary to make sure the reminderId is at the correct instance
   switch (action.type) {
     case ADD_REMINDER:

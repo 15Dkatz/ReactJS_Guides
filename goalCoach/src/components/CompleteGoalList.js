@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { clearCompleted } from '../actions'
-import CompleteGoalItem from './CompleteGoalItem'
 import { completeGoalRef } from '../firebase'
 
 class CompleteGoalList extends Component {
@@ -32,24 +31,22 @@ class CompleteGoalList extends Component {
   render() {
     return (
       <div>
-        {this.state.completeGoals.map((completeGoal, index) =>
-          <CompleteGoalItem
-            key={index}
-            title={completeGoal.title}
-            email={completeGoal.email}
-          />
-        )}
         {
-          this.state.completeGoals.length > 0 ?
-          <button
-            onClick={() => this.props.clearCompleted()}
-            className="btn btn-primary"
-          >
-            Clear All
-          </button> :
-          <span style={{display: 'none'}}></span>
+          this.state.completeGoals.map((completeGoal, index) => {
+            const { title, email } = completeGoal;
+            return (
+              <div key={index}>
+                <strong>{title}</strong> completed by <em>{email}</em>
+              </div>
+            )
+          })
         }
-
+        <button
+          onClick={() => this.props.clearCompleted()}
+          className="btn btn-primary"
+        >
+          Clear All
+        </button>
       </div>
     )
   }

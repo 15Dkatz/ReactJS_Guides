@@ -1,7 +1,7 @@
 import React from 'react'
-import AddGoal from '../components/AddGoal'
-import GoalList from '../components/GoalList'
-import CompleteGoalList from '../components/CompleteGoalList'
+import AddGoal from './AddGoal'
+import GoalList from './GoalList'
+import CompleteGoalList from './CompleteGoalList'
 import { firebaseApp } from '../firebase'
 import { browserHistory } from 'react-router'
 
@@ -13,7 +13,7 @@ function signOut() {
   })
 }
 
-const GoalDashboard = () => (
+const App = () => (
     <div style={{padding: '5%'}}>
       <h3>Goals</h3>
       <AddGoal />
@@ -30,4 +30,4 @@ const GoalDashboard = () => (
     </div>
 )
 
-export default GoalDashboard
+export default App

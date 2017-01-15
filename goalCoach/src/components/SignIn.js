@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { Link } from 'react-router'
 import { firebaseApp } from '../firebase'
 
 
 class SignIn extends Component {
-  state = { // explain that declaring a variable here becomes a class member
-    email: '',
-    password: '',
-    error: ''
+  constructor(props) {
+    super(props);
+    this.state = { // explain that declaring a variable here becomes a class member
+      email: '',
+      password: '',
+      error: {
+        message: ''
+      }
+    }
   }
 
 
@@ -59,9 +63,4 @@ class SignIn extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  let { user } = state.reducer; // this should just be state not state.reducer... TODO fix
-  return {user}
-}
-
-export default connect(mapStateToProps, null)(SignIn);
+export default SignIn;

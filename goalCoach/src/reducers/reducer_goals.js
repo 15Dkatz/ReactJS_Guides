@@ -2,16 +2,16 @@ import { ADD_GOAL, COMPLETE_GOAL } from '../constants'
 import { goalRef } from '../firebase'
 
 export default (state = [], action) => {
-  // read state from firebase
   switch(action.type) {
     case ADD_GOAL:
-      let {email, title} = action.payload;
-      goalRef.push({email, title})
-      return [...state, {email, title}]
+      // action.payload = { email, title };
+      console.log('action.payload', action.payload);
+      goalRef.push(action.payload)
+      return [...state, action.payload]
     case COMPLETE_GOAL:
-      let serverKey = action.payload.serverKey;
+      const { serverKey } = action.payload;
       goalRef.child(serverKey).remove()
-      return [...state]; // explain with Babel transpiler that the spread operator is the same as Object.assign({}) // really illustrate the spread operator
+      return [...state];
     default:
       return state;
   }
