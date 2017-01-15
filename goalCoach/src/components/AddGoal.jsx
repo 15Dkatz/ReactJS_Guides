@@ -10,12 +10,13 @@ class AddGoal extends Component {
     }
   }
 
-  addGoal(email, title) {
+  addGoal(title) {
+    const { email } = this.props.user;
     goalRef.push({email, title})
   }
 
   render() {
-    const { email } = this.props.user;
+    
     return (
       <form className="form-inline">
         <div className="form-group">
@@ -26,7 +27,7 @@ class AddGoal extends Component {
             style={{marginRight: '5px'}}
           />
           <button
-            onClick={() => this.addGoal(email, this.state.title)}
+            onClick={() => this.addGoal(this.state.title)}
             className="btn btn-success"
             type="button"
           >

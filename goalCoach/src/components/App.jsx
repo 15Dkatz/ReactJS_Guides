@@ -17,11 +17,7 @@ const App = () => (
       <h4>Completed Goals</h4>
       <CompleteGoalList />
       <hr />
-      <div>
-        <button onClick={() => signOut()} className="btn btn-danger">
-          Sign Out
-        </button>
-      </div>
+      <button onClick={() => signOut()} className="btn btn-danger">Sign Out</button>
     </div>
 )
 
