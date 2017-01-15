@@ -1,23 +1,22 @@
-import * as types from '../constants';
+import { SIGNED_IN, SET_GOALS, SET_COMPLETED } from '../constants';
 
-export function logUser(email, uid) {
+export function logUser(email) {
   return {
-    type: types.SIGNED_IN,
-    email,
-    uid
+    type: SIGNED_IN,
+    email
   }
 }
 
 export function setGoals(goals) {
   return {
-    type: types.SET_GOALS,
+    type: SET_GOALS,
     goals
   }
 }
 
 export function setCompleted(completeGoals) {
   return {
-    type: types.SET_COMPLETED,
+    type: SET_COMPLETED,
     completeGoals
   }
 }
