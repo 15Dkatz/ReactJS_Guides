@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { completeGoal } from '../actions';
-
+import { goalRef, completeGoalRef } from '../firebase';
 
 class GoalItem extends Component {
   completeGoal(serverKey, title) {
-    let currentUser = this.props.user;
-    this.props.completeGoal(serverKey, currentUser.email, title);
+    const { email } = this.props.user;
+    goalRef.child(serverKey).remove()
+    completeGoalRef.push({email, title})
   }
 
   render() {
@@ -34,4 +34,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { completeGoal })(GoalItem)
+export default connect(mapStateToProps, null)(GoalItem)

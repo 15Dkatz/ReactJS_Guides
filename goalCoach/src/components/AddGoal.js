@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addGoal } from '../actions';
+import { goalRef } from '../firebase';
 
 class AddGoal extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      text: ''
+      title: ''
     }
+  }
+
+  addGoal(email, title) {
+    goalRef.push({email, title})
   }
 
   render() {
@@ -17,12 +21,12 @@ class AddGoal extends Component {
         <div className="form-group">
           <input
             type="text" placeholder="Add a goal"
-            onChange={event => this.setState({text: event.target.value})}
+            onChange={event => this.setState({title: event.target.value})}
             className="form-control"
             style={{marginRight: '5px'}}
           />
           <button
-            onClick={() => this.props.addGoal(email, this.state.text)}
+            onClick={() => this.addGoal(email, this.state.title)}
             className="btn btn-success"
             type="button"
           >
@@ -41,4 +45,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { addGoal })(AddGoal)
+export default connect(mapStateToProps, null)(AddGoal)

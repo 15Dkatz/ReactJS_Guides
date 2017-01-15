@@ -1,16 +1,10 @@
-import { ADD_GOAL, COMPLETE_GOAL } from '../constants'
-import { goalRef } from '../firebase'
+import { SET_GOALS } from '../constants';
 
 export default (state = [], action) => {
   switch(action.type) {
-    case ADD_GOAL:
-      let { email, title } = action.payload;
-      goalRef.push({ email, title })
-      return [...state, { email, title }]
-    case COMPLETE_GOAL:
-      const { serverKey } = action.payload;
-      goalRef.child(serverKey).remove()
-      return [...state];
+    case SET_GOALS:
+      const { goals } = action;
+      return goals;
     default:
       return state;
   }

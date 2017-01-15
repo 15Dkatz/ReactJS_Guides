@@ -8,7 +8,7 @@ let user = {
 export default (state = user, action) => {
   switch (action.type) {
     case SIGNED_IN:
-      let {email, uid} = action.payload;
+      let {email, uid} = action;
       user = {
         email,
         uid

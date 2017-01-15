@@ -3,36 +3,21 @@ import * as types from '../constants';
 export function logUser(email, uid) {
   return {
     type: types.SIGNED_IN,
-    payload: {
-      email,
-      uid
-    }
+    email,
+    uid
   }
 }
 
-export function addGoal(email, title) {
+export function setGoals(goals) {
   return {
-    type: types.ADD_GOAL,
-    payload: {
-      email,
-      title
-    }
+    type: types.SET_GOALS,
+    goals
   }
 }
 
-export function completeGoal(serverKey, email, title) {
+export function setCompleted(completeGoals) {
   return {
-    type: types.COMPLETE_GOAL,
-    payload: {
-      serverKey,
-      email,
-      title
-    }
-  }
-}
-
-export function clearCompleted() {
-  return {
-    type: types.CLEAR_COMPLETED
+    type: types.SET_COMPLETED,
+    completeGoals
   }
 }
