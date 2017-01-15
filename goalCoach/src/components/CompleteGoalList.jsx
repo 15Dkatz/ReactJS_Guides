@@ -4,17 +4,8 @@ import { setCompleted } from '../actions';
 import { completeGoalRef } from '../firebase';
 
 class CompleteGoalList extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {completeGoals: []}
-  }
-
   componentDidMount() {
-    this.listenForItems(completeGoalRef)
-  }
-
-  listenForItems(ref) {
-    ref.on('value', snap => {
+    completeGoalRef.on('value', snap => {
       let completeGoals = [];
       snap.forEach(completeGoal => {
         let {email, title} = completeGoal.val();
@@ -23,8 +14,9 @@ class CompleteGoalList extends Component {
           title
         })
       })
+      // console.log('completeGoals', completeGoals)
       this.props.setCompleted(completeGoals);
-    })
+    });
   }
 
   clearCompleted() {
