@@ -9,7 +9,7 @@ class GoalItem extends Component {
     return (
       <div style={{margin: '5px'}}>
         <strong>{title}</strong>
-        <span style={{marginRight: '5px'}}> submitted by<em>{email}</em></span>
+        <span style={{marginRight: '5px'}}> submitted by <em>{email}</em></span>
         <button
           onClick={() => this.props.completeGoal(serverKey, email, title)}
           className="btn btn-sm btn-primary"

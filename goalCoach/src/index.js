@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { createStore, combineReducers } from 'redux'
 import { Provider } from 'react-redux'
 import { Router, Route, browserHistory } from 'react-router'
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux'
+import { routerReducer } from 'react-router-redux'
 import reducer from './reducers'
 import { firebaseApp } from './firebase'
 import { logUser } from './actions'
@@ -13,30 +13,20 @@ import SignUp from './components/SignUp'
 import App from './components/App'
 
 const store = createStore(combineReducers({reducer, routing: routerReducer}));
-const history = syncHistoryWithStore(browserHistory, store)
-
-// use history rather than browserHistory because the history object needs to be updated
-history.listen(location => {
-  // console.log('new location', location)
-  let signedIn = store.getState().reducer.user.signedIn;
-  let pathname = location.pathname;
-  if (!signedIn && pathname !== '/signin' && pathname !== '/signup') {
-    browserHistory.replace('/signin')
-  }
-})
-
 
 firebaseApp.auth().onAuthStateChanged(user => {
   if (user) {
     let {email, uid} = user;
-    store.dispatch(logUser(email, uid))
-    browserHistory.push('/app')
+    store.dispatch(logUser(email, uid));
+    browserHistory.push('/app');
+  } else {
+    browserHistory.replace('/signin');
   }
 })
 
 render(
   <Provider store={store}>
-    <Router path="/" history={history}>
+    <Router path="/" history={browserHistory}>
       <Route path="/signin" component={SignIn}/>
       <Route path="/signup" component={SignUp}/>
       <Route path="/app" component={App}/>

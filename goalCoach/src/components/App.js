@@ -18,10 +18,10 @@ const App = () => (
       <h3>Goals</h3>
       <AddGoal />
       <GoalList />
-      <hr/>
+      <hr />
       <h4>Completed Goals</h4>
       <CompleteGoalList />
-      <hr/>
+      <hr />
       <div>
         <button onClick={() => signOut()} className="btn btn-danger">
           Sign Out
