@@ -4,10 +4,9 @@ import { goalRef } from '../firebase'
 export default (state = [], action) => {
   switch(action.type) {
     case ADD_GOAL:
-      // action.payload = { email, title };
-      console.log('action.payload', action.payload);
-      goalRef.push(action.payload)
-      return [...state, action.payload]
+      let { email, title } = action.payload;
+      goalRef.push({ email, title })
+      return [...state, { email, title }]
     case COMPLETE_GOAL:
       const { serverKey } = action.payload;
       goalRef.child(serverKey).remove()
