@@ -12,7 +12,7 @@ class AddGoal extends Component {
 
   addGoal(title) {
     const { email } = this.props.user;
-    goalRef.push({email, title})
+    goalRef.push({email, this.state.title})
   }
 
   render() {
@@ -27,7 +27,7 @@ class AddGoal extends Component {
             style={{marginRight: '5px'}}
           />
           <button
-            onClick={() => this.addGoal(this.state.title)}
+            onClick={() => this.addGoal()}
             className="btn btn-success"
             type="button"
           >
