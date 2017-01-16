@@ -6,8 +6,8 @@ class GoalItem extends Component {
   completeGoal() {
     const { serverKey, title } = this.props.goal;
     const { email } = this.props.user;
-    goalRef.child(serverKey).remove()
-    completeGoalRef.push({email, title})
+    completeGoalRef.push({email, title});
+    goalRef.child(serverKey).remove();
   }
 
   render() {
