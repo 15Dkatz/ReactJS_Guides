@@ -10,7 +10,7 @@ class GoalItem extends Component {
   }
 
   render() {
-    const { serverKey, email, title } = this.props;
+    const { serverKey, email, title } = this.props.goal;
     return (
       <div style={{margin: '5px'}}>
         <strong>{title}</strong>
