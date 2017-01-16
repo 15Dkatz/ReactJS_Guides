@@ -9,9 +9,3 @@ export default combineReducers({
   goals,
   completeGoals
 })
-
-// const tempReducer = () => {
-// 	return {};
-// }
-
-// export default tempReducer;
