@@ -22,11 +22,11 @@ class GoalList extends Component {
     return (
       <div>
         {
-          this.props.goals.map(goal => {
+          this.props.goals.map((goal, index) => {
             let {key, title, email} = goal;
             return (
               <GoalItem
-                key={key}
+                key={index}
                 serverKey={key}
                 title={title}
                 email={email}
